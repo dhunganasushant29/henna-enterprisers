@@ -1,0 +1,417 @@
+/*
+  Footer: brand and contact lines, a departures board of
+  offices with split-flap clocks, link columns and a bottom bar.
+*/
+.footer {
+  position: relative;
+  overflow: hidden;
+  background: #0e1116;
+  color: rgb(255 255 255 / 0.66);
+  font-size: 0.9375rem;
+  /* leave room for the floating call / WhatsApp buttons (a bar on phones) */
+  padding-bottom: 5rem;
+}
+/* Red hairline across the top that fades at both ends, with a soft glow under it */
+.glow {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 22rem;
+  pointer-events: none;
+  background:
+    linear-gradient(to right, transparent, rgb(216 30 42 / 0.7), transparent) top / 100% 1px no-repeat,
+    radial-gradient(60% 100% at 70% 0%, rgb(200 32 43 / 0.16), transparent 70%);
+}
+.inner {
+  composes: container from "@/styles/layout.module.css";
+  position: relative;
+  z-index: 1;
+}
+.heading {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.42);
+}
+
+/* ===== Brand + contact lines ========================================== */
+.top {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+  padding-block: 5rem 4rem;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.emblem {
+  width: auto;
+  height: 2.75rem;
+}
+.wordmark {
+  width: auto;
+  height: 2.1rem;
+}
+.tagline {
+  max-width: 24rem;
+  margin-top: 2rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.6vw, 2.15rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: white;
+}
+.tagline em {
+  color: var(--color-on-dark-accent);
+}
+.about {
+  max-width: 26rem;
+  margin-top: 1.1rem;
+  line-height: 1.7;
+}
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.8rem 0.4rem 0.65rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.03);
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 0.6);
+}
+.badge strong {
+  font-weight: 600;
+  color: white;
+}
+.iconGreen {
+  color: #34d399;
+}
+.iconGold {
+  fill: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* ---- Contact lines: big serif values, an icon chip that turns red on hover ---- */
+.lines {
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+}
+.line {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "label arrow"
+    "value arrow";
+  align-items: center;
+  column-gap: 1.25rem;
+  padding-block: 1.35rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+}
+/* Red underline that sweeps across the row on hover */
+.line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--color-on-dark-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s var(--ease-out);
+}
+.line:hover::after {
+  transform: scaleX(1);
+}
+.lineLabel {
+  grid-area: label;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.42);
+}
+.lineValue {
+  grid-area: value;
+  margin-top: 0.3rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3vw, 2.35rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: white;
+  word-break: break-word;
+  transition: transform 0.5s var(--ease-out);
+}
+.line:hover .lineValue {
+  transform: translateX(0.5rem);
+}
+.lineArrow {
+  grid-area: arrow;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgb(255 255 255 / 0.15);
+  border-radius: 999px;
+  color: white;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    transform 0.5s var(--ease-out);
+}
+.line:hover .lineArrow {
+  border-color: var(--color-brand);
+  background: var(--color-brand);
+  transform: rotate(-8deg) scale(1.06);
+}
+
+/* ===== Departures board ================================================ */
+.board {
+  padding: 1.25rem;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: 1rem;
+  background: linear-gradient(180deg, #13161d, #0b0d12);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
+}
+.boardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.25rem 0.25rem 1rem;
+}
+.boardTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: #ffd27a;
+}
+.boardPlane {
+  transform: rotate(45deg);
+}
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 0.45);
+}
+.liveDot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: #34d399;
+  box-shadow: 0 0 0 3px rgb(52 211 153 / 0.18);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .liveDot {
+    animation: blink 2s ease-in-out infinite;
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0.35;
+  }
+}
+/* Column labels, hidden on phones */
+.boardCols {
+  display: none;
+}
+.rows {
+  display: grid;
+  gap: 0.35rem;
+}
+.row {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  grid-template-areas:
+    "code place clock"
+    "code place diff";
+  align-items: center;
+  column-gap: 1rem;
+  row-gap: 0.3rem;
+  padding: 0.85rem 0.75rem;
+  border-radius: 0.6rem;
+  background: rgb(255 255 255 / 0.025);
+  transition: background-color 0.3s;
+}
+.row:hover {
+  background: rgb(255 255 255 / 0.05);
+}
+.code {
+  grid-area: code;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #ffd27a;
+  font-variant-numeric: tabular-nums;
+}
+.place {
+  grid-area: place;
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+.city {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: white;
+}
+.country {
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 0.45);
+}
+.clock {
+  grid-area: clock;
+  justify-self: end;
+}
+.diff,
+.diffHead {
+  grid-area: diff;
+  justify-self: end;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  color: rgb(255 255 255 / 0.5);
+}
+.diffHead {
+  color: #34d399;
+}
+
+/* ===== Links ============================================================= */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem 2rem;
+  padding-block: 4rem 3.5rem;
+}
+.columns > :last-child {
+  grid-column: 1 / -1;
+}
+.list {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1.25rem;
+}
+.listNote {
+  display: block;
+  font-size: 0.75rem;
+  color: rgb(255 255 255 / 0.4);
+}
+.link {
+  position: relative;
+  display: inline-block;
+  word-break: break-word;
+  transition:
+    color 0.2s,
+    transform 0.3s var(--ease-out);
+}
+/* A small red dash slides in before the hovered link */
+.link::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -0.9rem;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--color-on-dark-accent);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition:
+    opacity 0.2s,
+    transform 0.3s var(--ease-out);
+}
+.link:hover {
+  color: white;
+  transform: translateX(0.9rem);
+}
+.link:hover::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* ===== Bottom bar ========================================================= */
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding-block: 1.75rem;
+  border-top: 1px solid rgb(255 255 255 / 0.08);
+  font-size: 0.8125rem;
+}
+.muted {
+  color: rgb(255 255 255 / 0.4);
+}
+/* ===== Larger screens ===================================================== */
+@media (min-width: 768px) {
+  /* keep the bottom bar text clear of the floating buttons in the corner */
+  .bottom {
+    padding-right: 4.5rem;
+  }
+  .board {
+    padding: 1.5rem;
+  }
+  .boardCols {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr 9rem 9rem;
+    column-gap: 1.5rem;
+    padding: 0 1rem 0.6rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgb(255 255 255 / 0.35);
+  }
+  .colTime,
+  .colDiff {
+    text-align: right;
+  }
+  .row {
+    grid-template-columns: 4.5rem 1fr 9rem 9rem;
+    grid-template-areas: "code place clock diff";
+    column-gap: 1.5rem;
+    padding: 0.9rem 1rem;
+  }
+  .code {
+    font-size: 1.2rem;
+  }
+  .city {
+    font-size: 1.35rem;
+  }
+  .diff,
+  .diffHead {
+    font-size: 0.8125rem;
+  }
+  .columns {
+    grid-template-columns: 1fr 1fr 1.2fr;
+  }
+  .columns > :last-child {
+    grid-column: auto;
+  }
+}
+@media (min-width: 1024px) {
+  .top {
+    grid-template-columns: 5fr 7fr;
+    gap: 4rem;
+  }
+}

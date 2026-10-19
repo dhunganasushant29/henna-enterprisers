@@ -1,0 +1,61 @@
+/* Invisible marker over the first screen and a half; the button shows once it scrolls away */
+.marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 150vh;
+  pointer-events: none;
+}
+.button {
+  position: fixed;
+  right: 1rem;
+  /* sits above the floating call / WhatsApp bar on phones */
+  bottom: calc(4.75rem + env(safe-area-inset-bottom));
+  z-index: 39;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgb(255 255 255 / 0.28);
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: white;
+  box-shadow:
+    0 12px 30px -10px rgb(15 17 22 / 0.55),
+    0 0 0 4px rgb(255 255 255 / 0.06);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.75rem) scale(0.9);
+  transition:
+    opacity 0.3s,
+    transform 0.4s var(--ease-out),
+    visibility 0s linear 0.4s,
+    background-color 0.2s;
+}
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity 0.3s,
+    transform 0.4s var(--ease-out),
+    visibility 0s,
+    background-color 0.2s;
+}
+.button:hover {
+  background: var(--color-brand);
+}
+.button svg {
+  transition: transform 0.3s var(--ease-out);
+}
+.button:hover svg {
+  transform: translateY(-2px);
+}
+/* Wider screens: stacked above the floating call and WhatsApp buttons, centred on them */
+@media (min-width: 768px) {
+  .button {
+    right: 1.75rem;
+    bottom: calc(1.5rem + 3.5rem + 0.75rem + 3.5rem + 0.9rem);
+  }
+}

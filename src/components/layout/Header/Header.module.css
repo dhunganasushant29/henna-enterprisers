@@ -1,0 +1,219 @@
+.utility {
+  background: var(--color-ink);
+  color: rgb(255 255 255 / 0.72);
+  font-size: 0.8125rem;
+  display: none;
+}
+.bar {
+  border-bottom: 1px solid var(--color-line);
+  /* Solid rather than blurred glass: a blur behind a sticky bar is redrawn every scroll frame */
+  background: rgb(251 250 247 / 0.98);
+  transition: box-shadow 0.3s;
+}
+.scrolled {
+  box-shadow: 0 10px 30px -24px rgb(21 24 31 / 0.4);
+}
+
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  height: 4.5rem;
+  padding-inline: 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  transition: color 0.2s;
+}
+.link:hover,
+.link[aria-current="page"],
+.item:focus-within > .link {
+  color: var(--color-ink);
+}
+/* Active page: a short brand rule on the header's bottom edge */
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0.875rem;
+  right: 0.875rem;
+  bottom: -1px;
+  height: 2px;
+  background: var(--color-brand);
+  transform: scaleX(0);
+  transition: transform 0.35s var(--ease-out);
+}
+.link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* Services dropdown: opens on hover or keyboard focus, no JavaScript */
+.item {
+  position: relative;
+}
+.chevron {
+  width: 0.875rem;
+  height: 0.875rem;
+  transition: transform 0.25s;
+}
+.item:hover .chevron,
+.item:focus-within .chevron {
+  transform: rotate(180deg);
+}
+.panel {
+  position: absolute;
+  top: 100%;
+  left: -1rem;
+  width: 30rem;
+  padding: 0.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: white;
+  box-shadow: var(--shadow-soft);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition:
+    opacity 0.2s,
+    transform 0.25s var(--ease-out),
+    visibility 0.2s;
+}
+.item:hover .panel,
+.item:focus-within .panel {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.panelLink {
+  display: grid;
+  grid-template-columns: 1.75rem 1fr;
+  gap: 0.25rem 0.5rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s;
+}
+.panelLink:hover,
+.panelLink:focus-visible {
+  background: var(--color-paper);
+}
+.panelNum {
+  grid-row: span 2;
+  font-family: var(--font-serif);
+  font-size: 0.9375rem;
+  color: var(--color-brand);
+}
+
+/* ---- Structure ------------------------------------------------------ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+@media (min-width: 768px) {
+  .utility {
+    display: block;
+  }
+}
+.utilityInner {
+  composes: container from "@/styles/layout.module.css";
+  display: flex;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.sep {
+  margin-inline: 0.5rem;
+  color: rgb(255 255 255 / 0.3);
+}
+.utilityLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.utilityLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s;
+}
+.utilityLink:hover {
+  color: white;
+}
+.barInner {
+  composes: container from "@/styles/layout.module.css";
+  display: flex;
+  height: 72px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.nav {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .nav {
+    display: block;
+  }
+}
+.navList {
+  display: flex;
+  align-items: center;
+}
+.panelTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.panelText {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.contact {
+  display: none;
+  height: 2.75rem;
+  align-items: center;
+  padding-inline: 1.5rem;
+  border-radius: 9999px;
+  background: var(--color-ink);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: white;
+  transition: background-color 0.25s;
+}
+.contact:hover {
+  background: var(--color-brand);
+}
+@media (min-width: 640px) {
+  .contact {
+    display: inline-flex;
+  }
+}
+.menuButton {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 9999px;
+}
+@media (min-width: 1024px) {
+  .menuButton {
+    display: none;
+  }
+}
+
+/* Invisible marker at the very top of the page; the bar gets its shadow once it scrolls away */
+.marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 40px;
+  pointer-events: none;
+}

@@ -1,0 +1,73 @@
+.band {
+  composes: deferRender from "@/styles/layout.module.css";
+  position: relative;
+  overflow: hidden;
+  background: var(--color-ink);
+  color: white;
+}
+.inner {
+  composes: container from "@/styles/layout.module.css";
+  padding-block: 5rem;
+}
+@media (min-width: 768px) {
+  .inner {
+    padding-block: 7rem;
+  }
+}
+.layout {
+  display: grid;
+  gap: 3rem;
+}
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+  }
+}
+.text {
+  composes: reveal from "@/styles/motion.module.css";
+}
+.title {
+  composes: h2 from "@/styles/text.module.css";
+  margin-top: 1rem;
+}
+.accent {
+  color: var(--color-on-dark-accent);
+}
+.intro {
+  margin-top: 1.25rem;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: rgb(255 255 255 / 0.7);
+}
+.legend {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 0.7);
+}
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.lineSolid {
+  display: block;
+  width: 1.5rem;
+  height: 2px;
+  background: var(--color-brand);
+}
+.lineDashed {
+  display: block;
+  width: 1.5rem;
+  border-top: 1px dashed rgb(255 255 255 / 0.7);
+}
+.map {
+  composes: reveal from "@/styles/motion.module.css";
+}
+.offices {
+  margin-top: 4rem;
+  padding-top: 1px;
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+}

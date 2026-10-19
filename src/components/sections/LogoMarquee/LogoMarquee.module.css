@@ -1,0 +1,107 @@
+/* Two rows of client logos drifting in opposite directions. */
+.wrap {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+}
+/*
+  Soft fade at both edges so logos glide in and out. A gradient in the section's own colour,
+  laid on top, costs nothing per frame (a mask-image would redraw the whole strip every frame).
+  Set --marquee-fade on a parent when the section is not the paper colour.
+*/
+.wrap::before,
+.wrap::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  width: 10%;
+  pointer-events: none;
+}
+.wrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--marquee-fade, var(--color-paper)), transparent);
+}
+.wrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--marquee-fade, var(--color-paper)), transparent);
+}
+.row {
+  overflow: hidden;
+  contain: paint;
+}
+.track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .track {
+    animation: slide var(--duration, 60s) linear infinite;
+  }
+  .reverse {
+    animation-direction: reverse;
+  }
+  .row:hover .track {
+    animation-play-state: paused;
+  }
+}
+/* The track holds the list twice, so moving it by half loops seamlessly */
+@keyframes slide {
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+.tile {
+  display: flex;
+  width: 13.5rem;
+  height: 6.75rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1.75rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: white;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.4s var(--ease-out),
+    transform 0.4s var(--ease-out);
+}
+.tile:hover {
+  border-color: var(--color-line-strong);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-3px);
+}
+@media (max-width: 639px) {
+  .tile {
+    width: 10.5rem;
+    height: 5.5rem;
+    padding: 1rem 1.25rem;
+  }
+}
+.logo {
+  max-height: 3.25rem;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity 0.4s;
+}
+.tile:hover .logo {
+  opacity: 1;
+}
+.name {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.25;
+  color: var(--color-muted);
+}
+
+/* Plain list of client names for screen readers and search engines */
+.srList {
+  composes: srOnly from "@/styles/text.module.css";
+}

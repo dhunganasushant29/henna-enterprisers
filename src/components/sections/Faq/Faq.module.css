@@ -1,0 +1,89 @@
+.item summary {
+  list-style: none;
+  cursor: pointer;
+}
+.item summary::-webkit-details-marker {
+  display: none;
+}
+.icon {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+}
+/* Plus that turns into a minus */
+.icon::before,
+.icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--color-ink);
+  transition: transform 0.3s var(--ease-out);
+}
+.icon::after {
+  transform: rotate(90deg);
+}
+.item[open] .icon::after {
+  transform: rotate(0deg);
+}
+.item summary:hover h3 {
+  color: var(--color-brand);
+}
+
+@supports (interpolate-size: allow-keywords) {
+  .item {
+    interpolate-size: allow-keywords;
+  }
+  .item::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height 0.4s var(--ease-out),
+      content-visibility 0.4s allow-discrete;
+  }
+  .item[open]::details-content {
+    height: auto;
+  }
+}
+
+.list {
+  border-top: 1px solid var(--color-line);
+}
+.item {
+  border-bottom: 1px solid var(--color-line);
+}
+.summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-block: 1.5rem;
+}
+.question {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: color 0.2s;
+}
+.answer {
+  composes: body from "@/styles/text.module.css";
+  max-width: 48rem;
+  padding: 0 3rem 1.5rem 0;
+}
+/* The answer fades and settles in as the row opens */
+@media (prefers-reduced-motion: no-preference) {
+  .item[open] .answer {
+    animation: answer-in 0.5s var(--ease-out) 0.05s backwards;
+  }
+}
+@keyframes answer-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}

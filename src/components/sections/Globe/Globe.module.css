@@ -1,0 +1,26 @@
+.wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+/* The canvas is larger than its box so the zoomed-in globe is never cut off square. */
+.canvas {
+  position: absolute;
+  inset: -22%;
+  width: 144%;
+  height: 144%;
+  pointer-events: none;
+}
+
+/* Lightweight stand-in shown until the globe script has loaded */
+.poster {
+  position: absolute;
+  inset: 2.5%;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 62% 38%, rgb(200 32 43 / 0.18), transparent 45%),
+    radial-gradient(circle at 40% 35%, #20242e, #14171e 70%);
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.06),
+    0 0 80px 10px rgb(200 32 43 / 0.12);
+}

@@ -1,0 +1,130 @@
+/* Call / WhatsApp actions inside the dark hero card */
+.noteActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.noteCall,
+.noteWhatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+.noteCall {
+  background: var(--color-brand);
+  color: white;
+}
+.noteCall:hover {
+  background: var(--color-brand-600);
+}
+.noteWhatsapp {
+  border: 1px solid rgb(255 255 255 / 0.2);
+  color: white;
+}
+.noteWhatsapp svg {
+  color: var(--color-whatsapp);
+}
+.noteWhatsapp:hover {
+  border-color: rgb(255 255 255 / 0.5);
+}
+.noteHours {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 0.6);
+}
+.noteHours svg {
+  flex-shrink: 0;
+  color: var(--color-on-dark-accent);
+}
+
+.steps {
+  margin-top: 3.5rem;
+}
+
+/* Papers to bring, and the safety list */
+.papers {
+  display: grid;
+  gap: 4rem;
+}
+.bring {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--color-line);
+}
+.bringRow {
+  composes: reveal from "@/styles/motion.module.css";
+  display: grid;
+  grid-template-columns: minmax(0, 12rem) 1fr;
+  gap: 1rem;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid var(--color-line);
+}
+.bringName {
+  font-weight: 600;
+}
+.bringNote {
+  color: var(--color-muted);
+}
+.safety {
+  composes: reveal from "@/styles/motion.module.css";
+  align-self: start;
+  padding: 2rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
+}
+.safetyTitle {
+  composes: h3 from "@/styles/text.module.css";
+  margin-top: 1rem;
+}
+.safetyList {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.safetyItem {
+  display: flex;
+  gap: 1rem;
+  line-height: 1.65;
+  color: rgb(21 24 31 / 0.85);
+}
+.safetyNum {
+  font-family: var(--font-serif);
+  color: var(--color-brand);
+}
+
+/* Questions */
+.split {
+  display: grid;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .safety {
+    padding: 2.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .papers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .split {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .side {
+    grid-column: span 4;
+  }
+  .main {
+    grid-column: span 8;
+  }
+}

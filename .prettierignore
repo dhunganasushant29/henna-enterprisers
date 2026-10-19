@@ -1,0 +1,8 @@
+out
+.next
+node_modules
+src/data/images.ts
+src/data/map.ts
+public
+.claude
+.playwright-mcp

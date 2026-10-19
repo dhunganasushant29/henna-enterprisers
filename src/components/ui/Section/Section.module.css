@@ -1,0 +1,53 @@
+.section {
+  position: relative;
+  overflow: clip;
+}
+.deferred {
+  composes: deferRender from "@/styles/layout.module.css";
+}
+.bordered {
+  border-top: 1px solid var(--color-line);
+}
+
+/* Tones */
+.paper {
+}
+.white {
+  background: white;
+}
+.sand {
+  background: var(--color-paper-2);
+}
+.ink {
+  background: var(--color-ink);
+  color: white;
+}
+
+.inner {
+  composes: container from "@/styles/layout.module.css";
+  position: relative;
+}
+
+/* Vertical rhythm */
+.default {
+  padding-block: 5rem;
+}
+.compact {
+  padding-block: 4rem;
+}
+.flush {
+  padding-bottom: 5rem;
+}
+.none {
+}
+@media (min-width: 768px) {
+  .default {
+    padding-block: 7rem;
+  }
+  .compact {
+    padding-block: 5rem;
+  }
+  .flush {
+    padding-bottom: 7rem;
+  }
+}

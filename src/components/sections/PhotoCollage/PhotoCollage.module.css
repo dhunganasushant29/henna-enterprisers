@@ -1,0 +1,88 @@
+/* Two overlapping photos and a floating figure card, used in the About hero. */
+.collage {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 34rem;
+  margin-inline: auto;
+}
+.main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 74%;
+  height: 78%;
+  overflow: hidden;
+  border-radius: 999px 999px var(--radius-md) var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+.second {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 52%;
+  height: 50%;
+  overflow: hidden;
+  border: 6px solid var(--color-paper);
+  border-radius: var(--radius-md);
+  box-shadow: 0 30px 60px -30px rgb(21 24 31 / 0.45);
+}
+.main img,
+.second img {
+  transition: transform 1.2s var(--ease-out);
+}
+.collage:hover .main img,
+.collage:hover .second img {
+  transform: scale(1.04);
+}
+.card {
+  position: absolute;
+  right: 4%;
+  bottom: 6%;
+  max-width: 13.5rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-ink);
+  color: white;
+  box-shadow: 0 24px 48px -20px rgb(21 24 31 / 0.6);
+}
+.badge {
+  position: absolute;
+  top: 6%;
+  left: 4%;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--color-line);
+  border-radius: 9999px;
+  background: white;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-soft);
+}
+
+.dots {
+  bottom: -1.5rem;
+  left: -1.5rem;
+  width: 66%;
+  height: 66%;
+  opacity: 0.7;
+}
+.cover {
+  object-fit: cover;
+}
+.tick {
+  color: var(--color-success);
+}
+.years {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  line-height: 1;
+}
+.cardText {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: rgb(255 255 255 / 0.7);
+}

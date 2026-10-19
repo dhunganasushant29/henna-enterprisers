@@ -1,0 +1,22 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.light {
+  color: white;
+}
+.text {
+  composes: underline from "@/styles/text.module.css";
+  padding-bottom: 0.125rem;
+}
+.arrow {
+  color: var(--color-brand);
+  transition: transform 0.3s;
+}
+.link:hover .arrow {
+  transform: translateX(4px);
+}

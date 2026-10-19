@@ -1,0 +1,59 @@
+/* Key figures separated by hairlines: 2 columns on phones, 4 on wide screens. */
+.row {
+  --rule: var(--color-line);
+  --value: var(--color-ink);
+  --name: var(--color-muted);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.dark {
+  --rule: rgb(255 255 255 / 0.15);
+  --value: white;
+  --name: rgb(255 255 255 / 0.6);
+}
+.fact {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem 1.5rem 0;
+}
+.fact:nth-child(even) {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--rule);
+}
+.fact:nth-child(n + 3) {
+  border-top: 1px solid var(--rule);
+}
+@media (min-width: 1024px) {
+  .row {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .fact,
+  .fact:nth-child(even) {
+    padding-block: 0;
+  }
+  .fact:nth-child(n + 2) {
+    padding-left: 2rem;
+    border-left: 1px solid var(--rule);
+  }
+  .fact:nth-child(n + 3) {
+    border-top: 0;
+  }
+}
+.name {
+  order: 2;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--name);
+}
+.value {
+  order: 1;
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  line-height: 1.1;
+  color: var(--value);
+}
+@media (min-width: 768px) {
+  .value {
+    font-size: 3rem;
+  }
+}

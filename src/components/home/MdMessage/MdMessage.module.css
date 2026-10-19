@@ -1,0 +1,137 @@
+.section {
+  composes: deferRender from "@/styles/layout.module.css";
+  position: relative;
+  overflow: clip;
+  background: var(--color-ink);
+  color: white;
+}
+.layout {
+  display: grid;
+  gap: 3.5rem;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 5rem;
+  }
+}
+
+/* ---- Quote ------------------------------------------------------------ */
+.mark {
+  display: block;
+  margin-top: 1.5rem;
+  height: 3.5rem;
+  font-family: var(--font-serif);
+  font-size: 7rem;
+  line-height: 0.9;
+  color: var(--color-brand);
+}
+.quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.6vw, 2.15rem);
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+}
+.quote em {
+  font-style: italic;
+  color: #ff8a8f;
+}
+.signature {
+  margin-top: 2rem;
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-style: italic;
+  color: rgb(255 255 255 / 0.9);
+}
+.facts {
+  display: grid;
+  margin-top: 2.5rem;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: var(--radius-md);
+  background: rgb(255 255 255 / 0.1);
+}
+@media (min-width: 640px) {
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.fact {
+  padding: 1.1rem 1.25rem;
+  background: var(--color-ink);
+}
+
+.dots {
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 75%;
+  opacity: 0.4;
+}
+.inner {
+  composes: container from "@/styles/layout.module.css";
+  position: relative;
+  padding-block: 5rem;
+}
+@media (min-width: 768px) {
+  .inner {
+    padding-block: 7rem;
+  }
+}
+.portrait {
+  composes: reveal from "@/styles/motion.module.css";
+}
+.text {
+  composes: reveal from "@/styles/motion.module.css";
+}
+.role {
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 0.55);
+}
+.factName {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.5);
+}
+.factValue {
+  margin-top: 0.25rem;
+  color: rgb(255 255 255 / 0.9);
+}
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  margin-top: 2.5rem;
+}
+.readMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: white;
+}
+.underline {
+  composes: underline from "@/styles/text.module.css";
+}
+.arrow {
+  color: var(--color-on-dark-accent);
+  transition: transform 0.3s;
+}
+.readMore:hover .arrow {
+  transform: translateX(4px);
+}
+.email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgb(255 255 255 / 0.7);
+  transition: color 0.2s;
+}
+.email:hover {
+  color: white;
+}

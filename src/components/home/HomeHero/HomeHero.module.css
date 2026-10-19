@@ -1,0 +1,199 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-ink);
+  color: white;
+}
+/* Soft light falling from the top right, behind the map */
+.light {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  z-index: -1;
+  width: 60rem;
+  height: 60rem;
+  background: radial-gradient(closest-side, rgb(200 32 43 / 0.22), transparent);
+  pointer-events: none;
+}
+.title em {
+  font-style: italic;
+  color: #ff8a8f;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 0.9s var(--ease-out) backwards;
+    animation-delay: calc(var(--i, 0) * 110ms + 80ms);
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+.title {
+  composes: display from "@/styles/text.module.css";
+  margin-top: 1.5rem;
+  font-size: clamp(2.75rem, 4.9vw, 4.4rem);
+}
+
+/* Globe column; the canvas inside overflows slightly so the globe is never cut off square */
+.map {
+  position: relative;
+  max-width: 34rem;
+  margin-inline: auto;
+}
+@media (min-width: 1024px) {
+  .map {
+    margin-right: -2rem;
+  }
+}
+/* Fine caption under the globe */
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.75rem;
+  /* clear of the globe's glow, which spills past the canvas box */
+  margin-top: 2.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 0.62);
+  /* Sits above the globe canvas, which overflows its box */
+  position: relative;
+  z-index: 1;
+  justify-content: center;
+}
+.captionTitle {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand-100);
+}
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 0.5rem;
+  border-radius: 9999px;
+  background: #ff4a55;
+  box-shadow: 0 0 0 3px rgb(255 74 85 / 0.2);
+  vertical-align: middle;
+}
+.legendLine {
+  display: inline-block;
+  width: 1rem;
+  height: 2px;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+  background: var(--color-brand);
+}
+.legendDashed {
+  display: inline-block;
+  width: 1rem;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+  border-top: 1px dashed rgb(255 255 255 / 0.7);
+}
+
+.dots {
+  top: 0;
+  right: 0;
+  z-index: -10;
+  width: 46rem;
+  height: 34rem;
+  opacity: 0.5;
+}
+.inner {
+  composes: container from "@/styles/layout.module.css";
+  padding-top: 4rem;
+  padding-bottom: 3.5rem;
+}
+.grid {
+  display: grid;
+  gap: 3.5rem;
+}
+.text {
+  position: relative;
+  z-index: 10;
+}
+.eyebrow {
+  composes: label from "@/styles/text.module.css";
+  color: var(--color-brand-100);
+}
+.wideBreak {
+  display: none;
+}
+.intro {
+  max-width: 36rem;
+  margin-top: 1.75rem;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: rgb(255 255 255 / 0.7);
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+.trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin-top: 2.5rem;
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 0.65);
+}
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.strong {
+  font-weight: 600;
+  color: white;
+}
+.white {
+  color: white;
+}
+.badge {
+  color: #34d399;
+}
+.facts {
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+}
+@media (min-width: 640px) {
+  .wideBreak {
+    display: block;
+  }
+  .actions {
+    flex-direction: row;
+  }
+}
+@media (min-width: 768px) {
+  .inner {
+    padding-top: 6rem;
+    padding-bottom: 5rem;
+  }
+  .intro {
+    font-size: 1.25rem;
+  }
+  .facts {
+    margin-top: 5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 2rem;
+  }
+}

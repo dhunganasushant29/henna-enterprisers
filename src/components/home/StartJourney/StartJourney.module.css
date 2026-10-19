@@ -1,0 +1,78 @@
+.section {
+  composes: deferRender from "@/styles/layout.module.css";
+  position: relative;
+  overflow: hidden;
+  background: #0e1116;
+  color: white;
+}
+/* Warm red light behind the ticket */
+.glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(45% 70% at 72% 50%, rgb(200 32 43 / 0.22), transparent 70%);
+}
+.dots {
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 60%;
+  opacity: 0.35;
+}
+.inner {
+  composes: container from "@/styles/layout.module.css";
+  position: relative;
+  display: grid;
+  gap: 3.5rem;
+  align-items: center;
+  padding-block: 5rem;
+}
+.text {
+  composes: reveal from "@/styles/motion.module.css";
+}
+.title {
+  composes: h2 from "@/styles/text.module.css";
+  max-width: 30rem;
+  margin-top: 1rem;
+  color: white;
+}
+.title em {
+  color: var(--color-on-dark-accent);
+}
+.intro {
+  max-width: 30rem;
+  margin-top: 1.25rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgb(255 255 255 / 0.7);
+}
+.points {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+.point {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: rgb(255 255 255 / 0.85);
+}
+.check {
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+  color: var(--color-on-dark-accent);
+}
+.pass {
+  composes: reveal from "@/styles/motion.module.css";
+}
+@media (min-width: 768px) {
+  .inner {
+    padding-block: 7rem;
+  }
+}
+@media (min-width: 1024px) {
+  .inner {
+    grid-template-columns: 5fr 7fr;
+    gap: 4rem;
+  }
+}

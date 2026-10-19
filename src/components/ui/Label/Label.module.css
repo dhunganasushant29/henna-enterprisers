@@ -1,0 +1,6 @@
+.label {
+  composes: label from "@/styles/text.module.css";
+}
+.dark {
+  color: var(--color-brand-100);
+}

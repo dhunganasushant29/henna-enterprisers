@@ -1,0 +1,119 @@
+/* Mobile menu: dark sheet with big serif links that fade up one after another */
+.sheet {
+  padding: 1.25rem 1.5rem max(1.5rem, env(safe-area-inset-bottom));
+  background: radial-gradient(80% 50% at 100% 0%, rgb(200 32 43 / 0.22), transparent 70%), var(--color-ink);
+}
+.title {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 2.75rem;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.45);
+}
+.srOnly {
+  composes: srOnly from "@/styles/text.module.css";
+}
+.nav {
+  margin-top: 1.5rem;
+}
+.list {
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+}
+.item {
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+}
+.link {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding-block: 0.9rem;
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  line-height: 1.2;
+  color: white;
+  transition: color 0.2s;
+}
+.num {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgb(255 255 255 / 0.35);
+}
+.link[aria-current="page"] {
+  color: var(--color-on-dark-accent);
+}
+.subList {
+  display: grid;
+  gap: 0.15rem;
+  margin-top: -0.25rem;
+  padding: 0 0 1rem 2rem;
+}
+.subLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-block: 0.35rem;
+  font-size: 0.9375rem;
+  color: rgb(255 255 255 / 0.6);
+  transition: color 0.2s;
+}
+.subLink:hover,
+.subLink[aria-current="page"] {
+  color: white;
+}
+.subArrow {
+  opacity: 0.5;
+}
+.footer {
+  margin-top: auto;
+  padding-top: 2rem;
+}
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.call,
+.whatsapp {
+  display: flex;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.call {
+  background: var(--color-brand);
+  color: white;
+}
+.whatsapp {
+  border: 1px solid rgb(255 255 255 / 0.15);
+  color: white;
+}
+.whatsapp svg {
+  color: var(--color-whatsapp);
+}
+.licence {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 0.45);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .item,
+  .footer {
+    animation: rise 0.6s var(--ease-out) backwards;
+    animation-delay: calc(0.12s + var(--i, 0) * 0.05s);
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}

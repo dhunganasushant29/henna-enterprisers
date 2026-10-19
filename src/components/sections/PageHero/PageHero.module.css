@@ -1,0 +1,81 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-line);
+}
+.title em {
+  font-style: italic;
+  color: var(--color-brand);
+}
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--color-subtle);
+}
+.crumbs a:hover {
+  color: var(--color-ink);
+}
+
+.dots {
+  top: 0;
+  right: 0;
+  width: 40rem;
+  height: 26rem;
+  opacity: 0.6;
+}
+.inner {
+  composes: container from "@/styles/layout.module.css";
+  position: relative;
+  display: grid;
+  gap: 3rem;
+  padding-top: 2.5rem;
+  padding-bottom: 4rem;
+}
+@media (min-width: 768px) {
+  .inner {
+    padding-top: 3.5rem;
+    padding-bottom: 5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .inner {
+    grid-template-columns: 7fr 5fr;
+    align-items: center;
+    gap: 4rem;
+  }
+}
+.main {
+  min-width: 0;
+}
+.crumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.current {
+  color: var(--color-ink);
+}
+.label {
+  margin-top: 3rem;
+}
+.title {
+  composes: h1 from "@/styles/text.module.css";
+  margin-top: 1rem;
+}
+.intro {
+  composes: lead from "@/styles/text.module.css";
+  max-width: 42rem;
+  margin-top: 1.5rem;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+.aside {
+  min-width: 0;
+}

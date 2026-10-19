@@ -1,0 +1,115 @@
+/* Figures in the hero card */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: rgb(255 255 255 / 0.1);
+}
+.stat {
+  padding: 1rem;
+  background: var(--color-ink);
+}
+.statValue {
+  font-family: var(--font-serif);
+  font-size: 1.875rem;
+  line-height: 1.2;
+}
+.statName {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: rgb(255 255 255 / 0.6);
+}
+.ask {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-weight: 600;
+}
+.underline {
+  composes: underline from "@/styles/text.module.css";
+}
+.askArrow {
+  color: var(--color-on-dark-accent);
+  transition: transform 0.2s;
+}
+.ask:hover .askArrow {
+  transform: translateX(4px);
+}
+
+/* Industry list */
+.list {
+  border-top: 1px solid var(--color-line);
+}
+.row {
+  composes: reveal from "@/styles/motion.module.css";
+  display: grid;
+  gap: 1rem;
+  padding-block: 2rem;
+  border-bottom: 1px solid var(--color-line);
+}
+.num {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  color: var(--color-brand);
+}
+.name {
+  composes: h3 from "@/styles/text.module.css";
+}
+.roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.role {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--color-line);
+  border-radius: 3px;
+  background: white;
+  font-size: 0.9375rem;
+  color: rgb(21 24 31 / 0.8);
+}
+.more {
+  composes: reveal from "@/styles/motion.module.css";
+  max-width: 42rem;
+  margin-top: 3rem;
+}
+.moreText {
+  margin-top: 0.75rem;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+/* Client logos run edge to edge, outside the container */
+/* No scroll fade-in here: fading a container of moving logos made scrolling stutter */
+.marquee {
+  margin-top: 3rem;
+}
+.fullBleed {
+  /* Section is white here, so the edge fade is white too */
+  --marquee-fade: white;
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+}
+
+@media (min-width: 768px) {
+  .row {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: baseline;
+    gap: 2rem;
+  }
+  .num {
+    grid-column: span 1;
+  }
+  .name {
+    grid-column: span 4;
+  }
+  .roles {
+    grid-column: span 7;
+  }
+}

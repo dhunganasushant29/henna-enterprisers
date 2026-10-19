@@ -1,0 +1,71 @@
+/* Cut-out portrait standing in an arched, red-lit frame. Works on light and dark sections. */
+.portrait {
+  position: relative;
+  width: 100%;
+  max-width: 26rem;
+  margin-inline: auto;
+}
+/* Arched backdrop: deep red glow fading into the ink background */
+.arch {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 999px 999px var(--radius-md) var(--radius-md);
+  background:
+    radial-gradient(120% 80% at 50% 30%, rgb(200 32 43 / 0.55), transparent 60%), linear-gradient(to bottom, #2a1418, #1b1e26);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+}
+/* Thin offset outline echoing the arch */
+.outline {
+  position: absolute;
+  inset: -0.9rem -0.9rem 0.9rem 0.9rem;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 999px 999px var(--radius-md) var(--radius-md);
+  pointer-events: none;
+}
+.person {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 92%;
+}
+.person img,
+.silhouette {
+  object-fit: contain;
+  object-position: bottom;
+}
+.silhouette {
+  width: 100%;
+  height: 100%;
+}
+/* Name card overlapping the bottom of the portrait */
+.card {
+  position: absolute;
+  left: -1rem;
+  bottom: 1.75rem;
+  padding: 0.9rem 1.25rem;
+  border-radius: var(--radius-sm);
+  background: white;
+  color: var(--color-ink);
+  box-shadow: 0 20px 40px -20px rgb(0 0 0 / 0.6);
+}
+@media (min-width: 1024px) {
+  .card {
+    left: -2rem;
+  }
+}
+
+.dots {
+  top: 0;
+  right: 0;
+  width: 66%;
+  height: 50%;
+  opacity: 0.5;
+}
+.cardTitle {
+  display: block;
+  font-weight: 600;
+}
+.cardText {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}

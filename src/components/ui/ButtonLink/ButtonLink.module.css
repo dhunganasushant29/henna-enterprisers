@@ -1,0 +1,118 @@
+/* Pill-shaped call-to-action buttons used across the whole site. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 3rem;
+  padding: 0.5rem 0.6rem 0.5rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition:
+    background-color 0.25s,
+    border-color 0.25s,
+    color 0.25s,
+    box-shadow 0.35s var(--ease-out),
+    transform 0.35s var(--ease-out);
+}
+.button:hover {
+  transform: translateY(-2px);
+}
+.button:active {
+  transform: translateY(0);
+}
+/* Buttons with a leading icon (e.g. phone) have no arrow chip, so pad evenly. */
+.withIcon {
+  padding-inline: 1.4rem;
+}
+
+/* Arrow sits in a small round chip that slides on hover */
+.chip {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  transition:
+    transform 0.35s var(--ease-out),
+    background-color 0.25s;
+}
+.button:hover .chip {
+  transform: translateX(3px);
+}
+.arrow {
+  width: 1rem;
+  height: 1rem;
+}
+
+.primary {
+  background: var(--color-brand);
+  color: white;
+  box-shadow: 0 10px 24px -12px rgb(200 32 43 / 0.75);
+}
+.primary .chip {
+  background: rgb(255 255 255 / 0.18);
+}
+.primary:hover {
+  background: var(--color-brand-600);
+  box-shadow: 0 16px 30px -14px rgb(200 32 43 / 0.85);
+}
+
+.dark {
+  background: var(--color-ink);
+  color: white;
+  box-shadow: 0 10px 24px -14px rgb(21 24 31 / 0.6);
+}
+.dark .chip {
+  background: rgb(255 255 255 / 0.12);
+}
+.dark:hover {
+  background: var(--color-ink-3);
+}
+
+.outline {
+  border-color: var(--color-line-strong);
+  background: white;
+  color: var(--color-ink);
+}
+.outline .chip {
+  background: var(--color-paper-2);
+}
+.outline:hover {
+  border-color: var(--color-ink);
+  box-shadow: var(--shadow-soft);
+}
+.outline:hover .chip {
+  background: var(--color-ink);
+  color: white;
+}
+
+/* For dark backgrounds */
+.light {
+  background: white;
+  color: var(--color-ink);
+}
+.light .chip {
+  background: var(--color-paper-2);
+}
+.light:hover {
+  background: var(--color-paper);
+}
+.outlineLight {
+  border-color: rgb(255 255 255 / 0.3);
+  color: white;
+}
+.outlineLight .chip {
+  background: rgb(255 255 255 / 0.1);
+}
+.outlineLight:hover {
+  border-color: white;
+  background: rgb(255 255 255 / 0.06);
+}

@@ -1,0 +1,113 @@
+/* "At a glance" steps in the dark hero card, joined by a thin rail */
+.glance {
+  position: relative;
+  display: grid;
+  gap: 0.9rem;
+}
+.glance::before {
+  content: "";
+  position: absolute;
+  top: 0.8rem;
+  bottom: 0.8rem;
+  left: 0.8rem;
+  width: 1px;
+  background: rgb(255 255 255 / 0.15);
+}
+.glanceStep {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-weight: 600;
+  color: rgb(255 255 255 / 0.9);
+}
+.glanceNum {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  background: var(--color-ink);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-on-dark-accent);
+}
+.glanceFor {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.08);
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 0.75);
+}
+
+/* Overview text with the "What is included" card beside it */
+.overview {
+  display: grid;
+  gap: 3rem;
+}
+.prose {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: rgb(21 24 31 / 0.85);
+}
+.includes {
+  composes: reveal from "@/styles/motion.module.css";
+  padding: 1.75rem;
+  border: 1px solid var(--color-line);
+  background: white;
+}
+.includesTitle {
+  composes: caption from "@/styles/text.module.css";
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+.includesList {
+  margin-top: 1.25rem;
+}
+.include {
+  display: flex;
+  gap: 0.75rem;
+  padding-block: 0.75rem;
+}
+.include + .include {
+  border-top: 1px solid var(--color-line);
+}
+.check {
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+  color: var(--color-brand);
+}
+
+.steps {
+  margin-top: 3.5rem;
+}
+.more {
+  margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .includes {
+    padding: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .overview {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 4rem;
+  }
+  .overviewText {
+    grid-column: span 7;
+  }
+  .overviewAside {
+    grid-column: span 5;
+  }
+}

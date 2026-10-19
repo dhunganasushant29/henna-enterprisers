@@ -1,0 +1,24 @@
+/*
+  The site's one scroll motion: content gently fades up the first time it enters the viewport.
+  Play-once (see components/layout/ScrollReveal): an IntersectionObserver sets data-shown, a short
+  animation runs and then ends, so the browser can drop the element's GPU layer. Content already on
+  screen at load is never hidden. Without JavaScript, or with reduced motion, everything just shows.
+*/
+.reveal {
+  --reveal: 1;
+}
+/* Armed by ScrollReveal: waiting below the fold */
+:global(html[data-reveal]) .reveal:not([data-shown]) {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .reveal[data-shown="1"] {
+    animation: fade-up 0.8s var(--ease-out) backwards;
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+}

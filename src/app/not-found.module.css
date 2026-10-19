@@ -1,0 +1,37 @@
+.section {
+  position: relative;
+  overflow: hidden;
+}
+.dots {
+  top: 0;
+  right: 0;
+  width: 66.666%;
+  height: 100%;
+  opacity: 0.6;
+}
+.inner {
+  composes: container from "@/styles/layout.module.css";
+  position: relative;
+  padding-block: 7rem;
+}
+.title {
+  composes: h1 from "@/styles/text.module.css";
+  max-width: 42rem;
+  margin-top: 1rem;
+}
+.lead {
+  composes: lead from "@/styles/text.module.css";
+  max-width: 32rem;
+  margin-top: 1.5rem;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+@media (min-width: 768px) {
+  .inner {
+    padding-block: 10rem;
+  }
+}

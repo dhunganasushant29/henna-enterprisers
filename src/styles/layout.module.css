@@ -1,0 +1,17 @@
+/* Shared layout helpers. Components use them with `composes`. */
+.container {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 2.5rem;
+  }
+}
+/* Skip rendering work for off-screen sections until they are near the viewport */
+.deferRender {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}

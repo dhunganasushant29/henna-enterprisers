@@ -1,0 +1,63 @@
+.section {
+  background: white;
+}
+.inner {
+  composes: container from "@/styles/layout.module.css";
+  display: grid;
+}
+.door {
+  composes: reveal from "@/styles/motion.module.css";
+  padding-block: 4rem;
+}
+.door + .door {
+  border-top: 1px solid var(--color-line);
+}
+.title {
+  composes: h3 from "@/styles/text.module.css";
+  max-width: 28rem;
+  margin-top: 1rem;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+}
+.points {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+.point {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: var(--color-muted);
+}
+.check {
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+  color: var(--color-brand);
+}
+.link {
+  margin-top: 2.25rem;
+}
+@media (min-width: 768px) {
+  .inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .door {
+    padding-block: 5rem;
+  }
+  .door:first-child {
+    padding-right: 3rem;
+  }
+  .door + .door {
+    border-top: 0;
+    border-left: 1px solid var(--color-line);
+    padding-left: 3rem;
+  }
+}
+@media (min-width: 1024px) {
+  .door:first-child {
+    padding-right: 5rem;
+  }
+  .door + .door {
+    padding-left: 5rem;
+  }
+}

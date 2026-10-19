@@ -1,0 +1,199 @@
+/*
+  Quick contact buttons.
+  Phones: floating call + WhatsApp buttons at the top of the page, a full-width bar after scrolling.
+  Tablets and up: the floating buttons stay all the time (no bar).
+*/
+.marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100vh;
+  pointer-events: none;
+}
+
+/* ---- Floating buttons ------------------------------------------------ */
+.floats {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 40;
+  display: grid;
+  justify-items: end;
+  gap: 0.75rem;
+  transition:
+    opacity 0.3s,
+    transform 0.45s var(--ease-out),
+    visibility 0s;
+}
+.away {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(1rem) scale(0.85);
+  transition:
+    opacity 0.25s,
+    transform 0.45s var(--ease-out),
+    visibility 0s linear 0.45s;
+}
+.fabRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.fab {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 3px solid white;
+  border-radius: 999px;
+  color: white;
+  box-shadow: 0 14px 28px -12px rgb(15 17 22 / 0.6);
+  transition: transform 0.3s var(--ease-out);
+}
+.fab:active {
+  transform: scale(0.94);
+}
+.fabCall {
+  background: radial-gradient(circle at 35% 30%, #ef4a53, var(--color-brand) 60%, #a8161f);
+}
+.fabWhatsapp {
+  background: radial-gradient(circle at 35% 30%, #5ee58e, var(--color-whatsapp) 60%, #169c49);
+}
+/* Soft ring that pulses out from the WhatsApp button */
+.fabWhatsapp::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  border: 2px solid var(--color-whatsapp);
+  opacity: 0;
+  pointer-events: none;
+}
+/* Label with a small "online" dot next to the WhatsApp button */
+.pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  background: white;
+  box-shadow: 0 10px 24px -10px rgb(15 17 22 / 0.45);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+/* Little tail pointing at the button */
+.pill::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  width: 10px;
+  height: 10px;
+  background: white;
+  transform: translateY(-50%) rotate(45deg);
+  border-radius: 2px;
+}
+.pillDot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--color-whatsapp);
+  box-shadow: 0 0 0 3px rgb(37 211 102 / 0.2);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .floats {
+    animation: pop-in 0.6s var(--ease-out) 0.8s backwards;
+  }
+  .pill {
+    animation: pill-in 0.5s var(--ease-out) 1.4s backwards;
+  }
+  .fabWhatsapp::after {
+    animation: ping 2.4s cubic-bezier(0, 0, 0.2, 1) 2s infinite;
+  }
+}
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.85);
+  }
+}
+@keyframes pill-in {
+  from {
+    opacity: 0;
+    transform: translateX(0.5rem);
+  }
+}
+@keyframes ping {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}
+
+/* ---- Full-width bar --------------------------------------------------- */
+.bar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem max(0.5rem, env(safe-area-inset-bottom));
+  border-top: 1px solid rgb(255 255 255 / 0.08);
+  /* Solid, no backdrop blur: cheaper to keep on screen while the page scrolls */
+  background: rgb(21 24 31 / 0.98);
+  visibility: hidden;
+  transform: translateY(110%);
+  transition:
+    transform 0.45s var(--ease-out),
+    visibility 0s linear 0.45s;
+}
+.shown {
+  visibility: visible;
+  transform: none;
+  transition:
+    transform 0.5s var(--ease-out),
+    visibility 0s;
+}
+.action {
+  display: flex;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+.call {
+  background: var(--color-brand);
+}
+.whatsapp {
+  background: rgb(255 255 255 / 0.08);
+}
+.whatsappIcon {
+  color: var(--color-whatsapp);
+}
+
+@media (min-width: 768px) {
+  .bar {
+    display: none;
+  }
+  .floats {
+    right: 1.5rem;
+    bottom: 1.5rem;
+  }
+  .fab:hover {
+    transform: translateY(-2px) scale(1.04);
+  }
+}

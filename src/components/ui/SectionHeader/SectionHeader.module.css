@@ -1,0 +1,41 @@
+.header {
+  composes: reveal from "@/styles/motion.module.css";
+}
+/* With an action (e.g. a link) on the right on wide screens */
+.withAction {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .withAction {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+.text {
+  max-width: 42rem;
+}
+.center {
+  margin-inline: auto;
+  text-align: center;
+}
+.title {
+  composes: h2 from "@/styles/text.module.css";
+  margin-top: 1rem;
+  color: var(--color-ink);
+}
+.titleDark {
+  color: white;
+}
+.intro {
+  composes: lead from "@/styles/text.module.css";
+  margin-top: 1.25rem;
+}
+.introDark {
+  color: rgb(255 255 255 / 0.7);
+}
+.action {
+  flex-shrink: 0;
+}

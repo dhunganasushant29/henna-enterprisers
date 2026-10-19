@@ -1,0 +1,31 @@
+/*
+  Halftone dot field, the signature texture from the Henna company profile.
+  Dots fade out from one corner, so it reads as print, not as a UI pattern.
+*/
+.halftone {
+  position: absolute;
+  pointer-events: none;
+  background-image: radial-gradient(var(--dot) 1.15px, transparent 1.6px);
+  background-size: 9px 9px;
+}
+.brand {
+  --dot: rgb(200 32 43 / 0.55);
+}
+.ink {
+  --dot: rgb(21 24 31 / 0.22);
+}
+.light {
+  --dot: rgb(255 255 255 / 0.28);
+}
+.fromTopRight {
+  mask-image: radial-gradient(circle at 100% 0%, black 0%, transparent 70%);
+}
+.fromBottomRight {
+  mask-image: radial-gradient(circle at 100% 100%, black 0%, transparent 70%);
+}
+.fromTopLeft {
+  mask-image: radial-gradient(circle at 0% 0%, black 0%, transparent 70%);
+}
+.fromBottomLeft {
+  mask-image: radial-gradient(circle at 0% 100%, black 0%, transparent 70%);
+}

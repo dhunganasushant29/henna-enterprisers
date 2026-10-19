@@ -1,0 +1,80 @@
+/* Shared type styles. Components use them with `composes: x from "@/styles/text.module.css"`. */
+.display {
+  font-family: var(--font-serif);
+  font-size: clamp(2.75rem, 6vw, 5rem);
+  font-weight: 450;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+.h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 450;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+  font-weight: 450;
+  line-height: 1.1;
+}
+.h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 2vw, 1.6rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+.lead {
+  font-size: clamp(1.075rem, 1.4vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+/* Small uppercase label above headings */
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+/* Small uppercase caption in grey (for field names, card headings) */
+.caption {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-subtle);
+}
+.body {
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+.bodyLarge {
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: rgb(21 24 31 / 0.85);
+}
+/* Text link with an animated underline */
+.underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s var(--ease-out);
+}
+.underline:hover {
+  background-size: 100% 1px;
+}
+/* Visually hidden but read by screen readers */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

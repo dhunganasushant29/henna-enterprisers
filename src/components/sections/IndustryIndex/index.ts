@@ -1,0 +1,1 @@
+export { IndustryIndex } from "./IndustryIndex";

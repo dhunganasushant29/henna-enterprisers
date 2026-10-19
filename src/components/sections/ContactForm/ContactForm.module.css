@@ -1,0 +1,541 @@
+.form {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: 1.25rem;
+  background: white;
+  box-shadow: 0 30px 60px -40px rgb(21 24 31 / 0.35);
+}
+.body {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.75rem;
+}
+@media (min-width: 768px) {
+  .body {
+    padding: 2.5rem;
+  }
+}
+
+/* ---- Progress ------------------------------------------------------ */
+.progress {
+  height: 4px;
+  background: var(--color-paper-2);
+}
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-brand), #ff6a73);
+  transition: width 0.5s var(--ease-out);
+}
+.progressText {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- "I want to" pills ----------------------------------------------- */
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.choice {
+  position: relative;
+}
+.choice input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.choice span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.1rem;
+  border: 1.5px solid var(--color-line-strong);
+  border-radius: 9999px;
+  background: var(--color-paper);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s,
+    color 0.2s;
+}
+.choice span:hover {
+  border-color: var(--color-ink-3);
+}
+.choice span::before {
+  content: "";
+  width: 0.95rem;
+  height: 0.95rem;
+  border: 1.5px solid var(--color-line-strong);
+  border-radius: 9999px;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.choice input:checked + span {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: white;
+}
+.choice input:checked + span::before {
+  border-color: white;
+  box-shadow:
+    inset 0 0 0 3px var(--color-ink),
+    inset 0 0 0 10px white;
+}
+.choice input:focus-visible + span {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+.choicesInvalid .choice span {
+  border-color: rgb(200 32 43 / 0.5);
+}
+
+/* ---- Fields ---------------------------------------------------------- */
+.row {
+  display: grid;
+  gap: 1.5rem;
+}
+@media (min-width: 640px) {
+  .row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.field {
+  display: grid;
+  align-content: start; /* keep fields aligned when a neighbour shows a two-line error */
+  gap: 0.45rem;
+}
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.optional {
+  font-weight: 400;
+  color: var(--color-subtle);
+}
+.control {
+  position: relative;
+}
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--color-subtle);
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: color 0.2s;
+}
+.control:focus-within .icon {
+  color: var(--color-brand);
+}
+.status {
+  position: absolute;
+  top: 50%;
+  right: 0.9rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.ok {
+  color: #059669;
+}
+.bad {
+  color: var(--color-brand);
+}
+
+.input {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.8rem 2.75rem 0.8rem 2.85rem;
+  border: 1.5px solid var(--color-line);
+  border-radius: 0.875rem;
+  background: var(--color-paper);
+  font: inherit;
+  color: var(--color-ink);
+  transition:
+    border-color 0.2s,
+    background-color 0.2s,
+    box-shadow 0.2s;
+}
+.input::placeholder {
+  color: #9a9ea6;
+}
+.input:hover {
+  border-color: var(--color-line-strong);
+}
+.input:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  background: white;
+  box-shadow: 0 0 0 4px rgb(200 32 43 / 0.1);
+}
+.input[aria-invalid="true"] {
+  border-color: var(--color-brand);
+  background: #fffafa;
+}
+.valid {
+  border-color: rgb(5 150 105 / 0.45);
+}
+select.input {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%236c717b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'><path d='m6 9 6 6 6-6'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 2.6rem center;
+}
+textarea.input {
+  min-height: 9rem;
+  padding-top: 0.9rem;
+  resize: vertical;
+}
+.textareaIcon {
+  top: 1.45rem;
+}
+.textareaStatus {
+  top: 1.45rem;
+}
+
+.helpRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--color-brand-700);
+}
+.counter {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--color-subtle);
+  font-variant-numeric: tabular-nums;
+}
+.counterWarn {
+  color: var(--color-brand-700);
+}
+
+/* Extra questions slide in when a purpose is chosen */
+.extra {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: var(--color-paper);
+  box-shadow: inset 0 0 0 1px var(--color-line);
+}
+.extra .input {
+  background-color: white; /* colour only, so the select keeps its arrow image */
+}
+@media (prefers-reduced-motion: no-preference) {
+  .extra {
+    animation: reveal 0.45s var(--ease-out) backwards;
+  }
+}
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+/* Hidden trap field for spam bots */
+.trap {
+  position: absolute;
+  left: -9999px;
+}
+
+/* ---- Send block: channel switch + button, perfectly aligned ---------- */
+.sendBlock {
+  display: grid;
+  gap: 0.85rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-line);
+}
+.sendRow {
+  --h: 3.5rem;
+  display: grid;
+  gap: 0.75rem;
+}
+@media (min-width: 640px) {
+  .sendRow {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: stretch;
+  }
+}
+.channel {
+  min-width: 0;
+}
+
+/* Two-option switch with a thumb that slides to the chosen side */
+.track {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: var(--h);
+  padding: 0.3rem;
+  border: 1.5px solid var(--color-line);
+  border-radius: 9999px;
+  background: var(--color-paper);
+}
+.thumb {
+  position: absolute;
+  top: 0.3rem;
+  bottom: 0.3rem;
+  left: 0.3rem;
+  width: calc(50% - 0.3rem);
+  border-radius: 9999px;
+  background: white;
+  box-shadow:
+    0 1px 2px rgb(21 24 31 / 0.08),
+    0 6px 14px -8px rgb(21 24 31 / 0.35);
+  transition: transform 0.45s var(--ease-out);
+}
+.track[data-channel="whatsapp"] .thumb {
+  transform: translateX(100%);
+}
+.option {
+  position: relative;
+  z-index: 1;
+  display: flex;
+}
+.option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.option span {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: color 0.25s;
+}
+.option span:hover,
+.option input:checked + span {
+  color: var(--color-ink);
+}
+.option input[value="email"]:checked + span svg {
+  color: var(--color-brand);
+}
+.option input[value="whatsapp"]:checked + span svg {
+  color: #128c7e;
+}
+.option input:focus-visible + span {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+.sendHint {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.submit {
+  display: inline-flex;
+  width: 100%;
+  height: var(--h);
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+  padding: 0.4rem 0.45rem 0.4rem 1.6rem;
+  border-radius: 9999px;
+  background: var(--color-brand);
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: white;
+  box-shadow: 0 12px 28px -14px rgb(200 32 43 / 0.8);
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s,
+    transform 0.35s var(--ease-out);
+}
+@media (min-width: 640px) {
+  .submit {
+    width: auto;
+    min-width: 13.5rem;
+  }
+}
+.submit:hover {
+  background: var(--color-brand-600);
+  transform: translateY(-2px);
+}
+.submit:disabled {
+  opacity: 0.75;
+  cursor: progress;
+  transform: none;
+}
+/* WhatsApp green, dark enough for white text to stay readable */
+.submitWhatsapp {
+  background: #0f7c66;
+  box-shadow: 0 12px 28px -14px rgb(15 124 102 / 0.8);
+}
+.submitWhatsapp:hover {
+  background: #0b6a57;
+}
+
+/* "Send on WhatsApp" button inside the error message */
+.fallback {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  background: #0f7c66;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: white;
+}
+.fallback:hover {
+  background: #0b6a57;
+}
+
+.submitChip {
+  display: inline-flex;
+  width: 2.6rem;
+  height: 2.6rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.18);
+}
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.875rem;
+  background: var(--color-brand-50);
+  font-size: 0.9rem;
+  color: var(--color-brand-700);
+}
+
+/* ---- Thank-you state -------------------------------------------------- */
+.done {
+  display: grid;
+  place-items: center;
+  gap: 0.75rem;
+  padding: 3.5rem 1.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: 1.25rem;
+  background: white;
+  text-align: center;
+}
+.tick {
+  display: inline-flex;
+  width: 4rem;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgb(16 185 129 / 0.12);
+  color: #059669;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tick {
+    animation: pop 0.6s var(--ease-out) backwards;
+  }
+}
+@keyframes pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+}
+
+/* ---- Text pieces ------------------------------------------------------- */
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .title {
+    font-size: 1.875rem;
+  }
+}
+.subtitle {
+  margin-top: 0.5rem;
+  color: var(--color-muted);
+}
+.legend {
+  margin-bottom: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.srOnly {
+  composes: srOnly from "@/styles/text.module.css";
+}
+.summaryText {
+  flex: 1;
+}
+.noShrink {
+  flex-shrink: 0;
+}
+.privacy {
+  color: var(--color-subtle);
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Thank-you screen */
+.doneTitle {
+  margin-top: 0.5rem;
+  font-family: var(--font-serif);
+  font-size: 1.875rem;
+}
+.doneText {
+  max-width: 24rem;
+  color: var(--color-muted);
+}
+.strong {
+  color: var(--color-ink);
+}
+.retry {
+  composes: underline from "@/styles/text.module.css";
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+.again {
+  composes: underline from "@/styles/text.module.css";
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: var(--color-brand);
+}

@@ -1,0 +1,257 @@
+/* Boarding pass: paper ticket with a perforated tear-off stub. Lays out from its own width. */
+.wrap {
+  container-type: inline-size;
+}
+/* Colour of the surface behind the pass, used for the cut-out notches */
+.dark {
+  --behind: #0e1116;
+}
+.paper {
+  --behind: var(--color-paper);
+}
+.white {
+  --behind: white;
+}
+.pass {
+  --notch: 0.85rem;
+  position: relative;
+  display: grid;
+  border-radius: 1.1rem;
+  background: #f6f2ea;
+  color: var(--color-ink);
+  box-shadow:
+    0 30px 60px -30px rgb(0 0 0 / 0.8),
+    0 0 0 1px rgb(255 255 255 / 0.06);
+  transform: rotate(-1.2deg);
+  transition: transform 0.6s var(--ease-out);
+}
+.pass:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+.main {
+  padding: 1.6rem 1.6rem 1.5rem;
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(21 24 31 / 0.1);
+}
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+.licence {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+.route {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+.code {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4vw, 3.25rem);
+  font-weight: 450;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.code em {
+  color: var(--color-brand);
+}
+.name {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+.to {
+  text-align: right;
+}
+/* Dotted flight path with the plane sitting in the middle */
+.line {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 1.5rem;
+  align-items: center;
+  background: radial-gradient(circle, rgb(21 24 31 / 0.35) 1px, transparent 1.5px) center / 8px 2px repeat-x;
+}
+.plane {
+  padding: 0 0.35rem;
+  box-sizing: content-box;
+  background: #f6f2ea;
+  color: var(--color-brand);
+  transform: rotate(45deg);
+}
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  margin-top: 1.5rem;
+}
+.fields dt {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-subtle);
+}
+.fields dd {
+  margin-top: 0.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.fields a:hover {
+  color: var(--color-brand);
+}
+
+/* Stub, separated by a dashed tear line with half-circle notches cut at each end */
+.stub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem 1.6rem 1.6rem;
+  border-top: 2px dashed rgb(21 24 31 / 0.18);
+}
+.stub::before,
+.stub::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--notch) * -1 - 1px);
+  width: calc(var(--notch) * 2);
+  height: calc(var(--notch) * 2);
+  border-radius: 999px;
+  background: var(--behind);
+}
+.stub::before {
+  left: calc(var(--notch) * -1);
+}
+.stub::after {
+  right: calc(var(--notch) * -1);
+}
+.stubLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-subtle);
+}
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.actions li:first-child {
+  grid-column: 1 / -1;
+}
+.action,
+.primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+.primary {
+  background: var(--color-brand);
+  color: white;
+}
+.primary:hover {
+  background: var(--color-ink);
+}
+/* Icons keep their size even when a label is long and the button is tight */
+.action svg,
+.primary svg {
+  flex-shrink: 0;
+}
+.action {
+  border: 1px solid rgb(21 24 31 / 0.15);
+  color: var(--color-ink);
+}
+.action:hover {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: white;
+}
+/* Decorative barcode made from stripes of different widths */
+.barcode {
+  height: 2.25rem;
+  margin-top: auto;
+  opacity: 0.85;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-ink) 0 2px,
+    transparent 2px 4px,
+    var(--color-ink) 4px 5px,
+    transparent 5px 8px,
+    var(--color-ink) 8px 11px,
+    transparent 11px 12px,
+    var(--color-ink) 12px 13px,
+    transparent 13px 17px
+  );
+}
+
+/* Stub below the ticket with room to spare: three buttons in a row under the main one */
+@container (min-width: 24rem) {
+  .actions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .action {
+    padding-inline: 0.5rem;
+  }
+}
+/* Wide enough: the stub moves to the right, the tear line turns vertical */
+@container (min-width: 34rem) {
+  .pass {
+    grid-template-columns: 1fr 15rem;
+  }
+  .stub {
+    border-top: 0;
+    border-left: 2px dashed rgb(21 24 31 / 0.18);
+  }
+  .stub::before,
+  .stub::after {
+    left: calc(var(--notch) * -1 - 1px);
+    right: auto;
+  }
+  .stub::before {
+    top: calc(var(--notch) * -1);
+  }
+  .stub::after {
+    top: auto;
+    bottom: calc(var(--notch) * -1);
+  }
+  .actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* On light pages: a softer shadow and a hairline edge so the cream ticket stands out */
+.paper .pass,
+.white .pass {
+  box-shadow:
+    0 30px 60px -28px rgb(21 24 31 / 0.35),
+    0 0 0 1px var(--color-line);
+}

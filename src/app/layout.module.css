@@ -1,0 +1,173 @@
+/*
+  Root styles for the whole site, scoped to the <html> element (no global selectors).
+  Holds the design tokens, a small reset and the base text styles.
+*/
+.root {
+  /* ---- Design tokens ---------------------------------------------- */
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif-face), ui-serif, Georgia, serif;
+
+  --color-paper: #fbfaf7;
+  --color-paper-2: #f3f0ea;
+  --color-line: #e4dfd6;
+  --color-line-strong: #cfc8bc;
+
+  --color-ink: #15181f;
+  --color-ink-2: #1f232c;
+  --color-ink-3: #2c313c;
+  --color-muted: #575c67;
+  --color-subtle: #6c717b;
+
+  --color-brand: #c8202b;
+  --color-brand-600: #ad1a24;
+  --color-brand-700: #8f141d;
+  --color-brand-50: #fbefed;
+  --color-brand-100: #f6d9d5;
+  --color-on-dark-accent: #ff8a8f;
+
+  --color-gold: #d9982f;
+  --color-success: #059669;
+  --color-whatsapp: #25d366;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --shadow-soft: 0 1px 2px rgb(21 24 31 / 0.04), 0 12px 32px -18px rgb(21 24 31 / 0.18);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ---- Page --------------------------------------------------------- */
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 7rem;
+  background: var(--color-paper);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .root {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Reset and base text sit in a layer, so any component class always wins over them. */
+@layer base {
+  .root body {
+    min-height: 100dvh;
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ---- Reset ------------------------------------------------------------ */
+  .root *,
+  .root *::before,
+  .root *::after {
+    box-sizing: border-box;
+    border: 0 solid;
+  }
+  .root :is(h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd, ol, ul, fieldset, legend) {
+    margin: 0;
+    padding: 0;
+  }
+  .root :is(ol, ul) {
+    list-style: none;
+  }
+  .root :is(h1, h2, h3, h4, h5, h6) {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  .root :is(img, svg, video, canvas, iframe) {
+    display: block;
+  }
+  .root :is(img, video) {
+    max-width: 100%;
+    height: auto;
+  }
+  .root a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+  .root :is(button, input, select, textarea) {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+  }
+  .root :is(button, select) {
+    background: none;
+    cursor: pointer;
+  }
+  .root address {
+    font-style: normal;
+  }
+  .root strong {
+    font-weight: 600;
+  }
+
+  /* ---- Base text ---------------------------------------------------------- */
+  .root :is(h1, h2, h3) {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+  .root p {
+    text-wrap: pretty;
+  }
+  .root ::selection {
+    background: var(--color-brand);
+    color: white;
+  }
+  .root :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* Keyboard users can jump straight to the content */
+.skipLink {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-ink);
+  color: white;
+  transform: translateY(-200%);
+}
+.skipLink:focus {
+  transform: none;
+}
+
+/* ---- Page transitions (components/layout/PageTransition): exit for the old page, enter for the new ---- */
+.root::view-transition-old(.pageExit) {
+  animation: page-out 0.18s ease-in both;
+}
+.root::view-transition-new(.pageEnter) {
+  animation: page-in 0.45s var(--ease-out) 0.05s backwards;
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .root::view-transition-group(*),
+  .root::view-transition-old(*),
+  .root::view-transition-new(*) {
+    animation: none !important;
+  }
+}

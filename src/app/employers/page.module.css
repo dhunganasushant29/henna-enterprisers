@@ -1,0 +1,127 @@
+/* "To get started" list inside the dark hero card */
+.brief {
+  display: grid;
+  gap: 0.85rem;
+}
+.briefItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  line-height: 1.5;
+  color: rgb(255 255 255 / 0.85);
+}
+.briefNum {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-on-dark-accent);
+}
+.briefMail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  background: white;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+.briefMail:hover {
+  background: var(--color-brand);
+  color: white;
+}
+.briefTo {
+  margin-top: 0.6rem;
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 0.5);
+  word-break: break-all;
+}
+
+.itemTitle {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: normal;
+}
+.itemBody {
+  margin-top: 0.5rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+/* Four promises */
+.promises {
+  display: grid;
+  column-gap: 2.5rem;
+}
+.promise {
+  composes: reveal from "@/styles/motion.module.css";
+  padding-block: 1.5rem;
+  border-top: 2px solid var(--color-ink);
+}
+
+/* Heading on the left, content on the right */
+.split {
+  display: grid;
+  gap: 3rem;
+}
+.sideAction {
+  margin-top: 2rem;
+}
+
+/* Documents list */
+.docs {
+  border-top: 1px solid var(--color-line);
+}
+.doc {
+  composes: reveal from "@/styles/motion.module.css";
+  display: grid;
+  gap: 0.75rem;
+  padding-block: 1.75rem;
+  border-bottom: 1px solid var(--color-line);
+}
+.docNum {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--color-brand);
+}
+
+@media (min-width: 640px) {
+  .promises {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 768px) {
+  .doc {
+    grid-template-columns: 3rem 1fr;
+  }
+}
+@media (min-width: 1024px) {
+  .promises {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .split {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .side {
+    grid-column: span 4;
+  }
+  .main {
+    grid-column: span 8;
+  }
+  .sticky {
+    position: sticky;
+    top: 9rem;
+  }
+}

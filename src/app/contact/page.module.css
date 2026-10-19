@@ -1,0 +1,81 @@
+/* Form on the left, office details on the right */
+.layout {
+  display: grid;
+  gap: 3rem;
+}
+.address {
+  composes: h3 from "@/styles/text.module.css";
+  margin-top: 1rem;
+  font-style: normal;
+}
+.openHours {
+  margin-top: 0.75rem;
+  color: var(--color-muted);
+}
+.directions {
+  margin-top: 1.5rem;
+}
+.channels {
+  margin-top: 3rem;
+  border-top: 1px solid var(--color-line);
+}
+.channel {
+  padding-block: 1.25rem;
+  border-bottom: 1px solid var(--color-line);
+}
+.channelName {
+  composes: caption from "@/styles/text.module.css";
+}
+.channelValue {
+  margin-top: 0.25rem;
+}
+.channelLink {
+  composes: underline from "@/styles/text.module.css";
+  font-size: 1.125rem;
+  font-weight: 600;
+  word-break: break-all;
+}
+.channelNote {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+/* Find us */
+.map {
+  composes: reveal from "@/styles/motion.module.css";
+  margin-top: 3rem;
+}
+.offices {
+  composes: reveal from "@/styles/motion.module.css";
+  margin-top: 1.5rem;
+  border: 1px solid var(--color-line);
+}
+.employerTip {
+  composes: reveal from "@/styles/motion.module.css";
+  max-width: 48rem;
+  margin-top: 2.5rem;
+  color: var(--color-muted);
+}
+.strong {
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.tipLink {
+  composes: underline from "@/styles/text.module.css";
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 4rem;
+  }
+  .formCol {
+    grid-column: span 7;
+  }
+  .infoCol {
+    grid-column: span 5;
+    padding-top: 1rem;
+  }
+}
