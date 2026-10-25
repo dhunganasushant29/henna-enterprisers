@@ -1,63 +1,283 @@
+/*
+  "Choose your path": a centred question, then two tall photo cards with the text over a
+  gradient, joined by a round "or" badge with a turning ring of text. Motion is transform
+  and opacity only.
+*/
 .section {
   background: white;
 }
 .inner {
   composes: container from "@/styles/layout.module.css";
+  padding-block: 4.5rem;
+}
+.head {
+  composes: reveal from "@/styles/motion.module.css";
   display: grid;
+  justify-items: center;
+  gap: 0.9rem;
+  text-align: center;
+}
+.heading {
+  composes: h2 from "@/styles/text.module.css";
+  max-width: 40rem;
+}
+.heading em {
+  color: var(--color-brand);
+}
+
+/* ---- Doors -------------------------------------------------------- */
+.doors {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  margin-top: 2.75rem;
+}
+/* Phones and tablets: the badge sits in the flow between the two cards, so it can never cover them */
+.door:first-of-type {
+  order: 1;
+}
+.door:nth-of-type(2) {
+  order: 3;
 }
 .door {
   composes: reveal from "@/styles/motion.module.css";
-  padding-block: 4rem;
+  position: relative;
+  display: flex;
+  min-height: 34rem;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.25rem;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: var(--color-ink);
+  color: white;
+  isolation: isolate;
+  box-shadow: 0 40px 70px -45px rgb(21 24 31 / 0.65);
+  transition: transform 0.6s var(--ease-out);
 }
-.door + .door {
-  border-top: 1px solid var(--color-line);
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  transition: transform 1.4s var(--ease-out);
+}
+.img {
+  object-fit: cover;
+}
+.shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, rgb(10 12 17 / 0.95) 0%, rgb(10 12 17 / 0.7) 38%, rgb(10 12 17 / 0.1) 70%),
+    linear-gradient(to bottom, rgb(10 12 17 / 0.5), transparent 28%);
+}
+/* Each door gets a hint of its own colour */
+.door:first-of-type .shade {
+  background:
+    linear-gradient(to top, rgb(10 12 17 / 0.95) 0%, rgb(10 12 17 / 0.7) 38%, rgb(10 12 17 / 0.1) 70%),
+    linear-gradient(to bottom, rgb(10 12 17 / 0.5), transparent 28%),
+    radial-gradient(70% 50% at 0% 100%, rgb(200 32 43 / 0.35), transparent 70%);
+}
+.door:nth-of-type(2) .shade {
+  background:
+    linear-gradient(to top, rgb(10 12 17 / 0.95) 0%, rgb(10 12 17 / 0.7) 38%, rgb(10 12 17 / 0.1) 70%),
+    linear-gradient(to bottom, rgb(10 12 17 / 0.5), transparent 28%),
+    radial-gradient(70% 50% at 100% 100%, rgb(255 170 60 / 0.22), transparent 70%);
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.label {
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+.fact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgb(10 12 17 / 0.45);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.2);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+.fact svg {
+  color: #34d399;
+}
+
+.body {
+  display: grid;
+  gap: 1.1rem;
 }
 .title {
-  composes: h3 from "@/styles/text.module.css";
   max-width: 28rem;
-  margin-top: 1rem;
-  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-family: var(--font-serif);
+  font-size: clamp(1.65rem, 3vw, 2.4rem);
+  font-weight: 450;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
 }
 .points {
-  display: grid;
-  gap: 0.75rem;
-  margin-top: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
 }
 .point {
-  display: flex;
-  align-items: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.1);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16);
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 0.9);
+}
+.point svg {
+  color: var(--color-on-dark-accent);
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
   gap: 0.75rem;
-  color: var(--color-muted);
+  margin-top: 0.4rem;
+  padding: 0.4rem 0.4rem 0.4rem 1.25rem;
+  border-radius: 999px;
+  background: white;
+  font-weight: 600;
+  color: var(--color-ink);
 }
-.check {
-  flex-shrink: 0;
-  margin-top: 0.25rem;
-  color: var(--color-brand);
+/* Stretched link: the whole card is clickable through this one link */
+.cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
 }
-.link {
-  margin-top: 2.25rem;
+.cta:focus-visible {
+  outline: none;
 }
-@media (min-width: 768px) {
-  .inner {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.door:has(.cta:focus-visible) {
+  outline: 3px solid var(--color-brand);
+  outline-offset: 4px;
+}
+.ctaIcon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background: var(--color-brand);
+  color: white;
+  transition: transform 0.45s var(--ease-out);
+}
+
+/* Hover (pointer devices): card lifts, photo zooms, arrow nudges */
+@media (hover: hover) {
+  .door:hover {
+    transform: translateY(-6px);
   }
+  .door:hover .media {
+    transform: scale(1.06);
+  }
+  .door:hover .ctaIcon {
+    transform: translate(3px, -3px) rotate(8deg);
+  }
+}
+
+/* ---- The "or" badge where the doors meet ------------------------- */
+.or {
+  position: relative;
+  order: 2;
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  width: 5.25rem;
+  height: 5.25rem;
+  border-radius: 999px;
+  background: white;
+  box-shadow: 0 20px 40px -18px rgb(21 24 31 / 0.5);
+  pointer-events: none;
+}
+.ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: var(--color-brand);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ring {
+    animation: turn 24s linear infinite;
+  }
+}
+@keyframes turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.orWord {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-style: italic;
+  line-height: 1;
+  color: var(--color-ink);
+}
+
+@media (min-width: 640px) {
   .door {
-    padding-block: 5rem;
-  }
-  .door:first-child {
-    padding-right: 3rem;
-  }
-  .door + .door {
-    border-top: 0;
-    border-left: 1px solid var(--color-line);
-    padding-left: 3rem;
+    padding: 1.75rem;
   }
 }
 @media (min-width: 1024px) {
-  .door:first-child {
-    padding-right: 5rem;
+  .inner {
+    padding-block: 6rem;
   }
-  .door + .door {
-    padding-left: 5rem;
+  .doors {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .door {
+    min-height: 38rem;
+    padding: 2.25rem;
+  }
+  /* Keep text clear of the "or" badge on the edges that face each other */
+  .door:first-of-type {
+    padding-right: 4rem;
+  }
+  .door:nth-of-type(2) {
+    padding-left: 4.5rem;
+  }
+  /* Desktop: the badge floats where the two doors meet */
+  .or {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    width: 6.5rem;
+    height: 6.5rem;
+    box-shadow:
+      0 0 0 6px white,
+      0 20px 40px -18px rgb(21 24 31 / 0.5);
+    transform: translate(-50%, -50%);
   }
 }

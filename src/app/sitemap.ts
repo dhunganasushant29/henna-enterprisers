@@ -10,7 +10,15 @@ const routes: { path: string; priority: number; photos?: ImageName[] }[] = [
   {
     path: "/",
     priority: 1,
-    photos: ["construction-workers", "hotel-chef", "security-guard", "factory-workers", "md-dinesh-bhandari"],
+    photos: [
+      "employer-meeting",
+      "airport-departure",
+      "construction-workers",
+      "hotel-chef",
+      "security-guard",
+      "factory-workers",
+      "md-dinesh-bhandari",
+    ],
   },
   { path: "/employers/", priority: 0.9, photos: ["employer-meeting"] },
   { path: "/job-seekers/", priority: 0.9, photos: ["airport-departure"] },
