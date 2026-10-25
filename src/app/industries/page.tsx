@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { CtaBand, HeroCard, LogoMarquee, PageHero, PhotoFeature } from "@/components/sections";
+import { CtaBand, HeroTicket, LogoMarquee, PageHero } from "@/components/sections";
 import { Label, Section, SectionHeader } from "@/components/ui";
 import { clients, industries, industrySlug } from "@/data";
 import { pageMetadata } from "@/lib/seo";
@@ -27,7 +27,15 @@ export default function IndustriesPage() {
         intro="We know these industries and the skills each job needs. So the workers we send are ready to start from day one."
 
         aside={
-          <HeroCard label="At a glance" title="The right worker for every job.">
+          <HeroTicket
+            photo={{
+              name: "construction-workers",
+              alt: "Construction workers in hard hats laying steel and concrete on a building site",
+              focus: "78% 35%",
+            }}
+            label="At a glance"
+            title="The right worker for every job."
+          >
             <dl className={styles.stats}>
               {[
                 [String(industries.length), "industries"],
@@ -44,20 +52,11 @@ export default function IndustriesPage() {
               <span className={styles.underline}>Ask about a job</span>
               <ArrowRight size={16} className={styles.askArrow} aria-hidden />
             </Link>
-          </HeroCard>
+          </HeroTicket>
         }
       />
 
       <Section defer={false}>
-        <PhotoFeature
-          name="construction-workers"
-          alt="Construction workers in hard hats laying steel and concrete on a building site"
-          label="Construction"
-          title="Masons, carpenters, steel fixers and helpers for building sites across the Gulf."
-          focus="50% 45%"
-          priority
-          className={styles.photo}
-        />
         <ol className={styles.list}>
           {industries.map((ind, i) => (
             <li key={ind.name} id={industrySlug(ind.name)} className={styles.row}>

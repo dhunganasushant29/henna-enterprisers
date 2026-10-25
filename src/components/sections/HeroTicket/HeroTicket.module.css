@@ -1,0 +1,173 @@
+/*
+  Photo frame with a paper ticket laid over its lower-left corner.
+  Phones: the ticket sits below the photo, pulled up to overlap it.
+*/
+.wrap {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+.frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: var(--color-ink);
+  box-shadow: 0 40px 80px -50px rgb(21 24 31 / 0.7);
+}
+.frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgb(12 14 19 / 0.45), transparent 45%),
+    radial-gradient(80% 60% at 100% 0%, rgb(200 32 43 / 0.25), transparent 65%);
+}
+.img {
+  object-fit: cover;
+}
+
+/* ---- The ticket ---- */
+.ticket {
+  --notch: 0.7rem;
+  position: relative;
+  z-index: 2;
+  margin: -4rem 1rem 0;
+  padding: 1.4rem 1.4rem 0;
+  border-radius: 1rem;
+  background: #f6f2ea;
+  color: var(--color-ink);
+  box-shadow:
+    0 30px 60px -28px rgb(21 24 31 / 0.45),
+    0 0 0 1px rgb(21 24 31 / 0.06);
+  transform: rotate(-1.5deg);
+  transition: transform 0.6s var(--ease-out);
+}
+.ticket:hover {
+  transform: rotate(0deg) translateY(-3px);
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgb(21 24 31 / 0.1);
+}
+.label {
+  flex: 1;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+.serial {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-subtle);
+}
+.title {
+  margin-top: 0.9rem;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+.body {
+  margin-top: 1.1rem;
+  padding-bottom: 1.25rem;
+}
+/* Tear-off stub: dashed line, notches cut at both ends, a strip of barcode */
+.stub {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-inline: -1.4rem;
+  padding: 0.85rem 1.4rem 1rem;
+  border-top: 2px dashed rgb(21 24 31 / 0.16);
+}
+.stub::before,
+.stub::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--notch) * -1 - 1px);
+  width: calc(var(--notch) * 2);
+  height: calc(var(--notch) * 2);
+  border-radius: 999px;
+  background: var(--color-paper);
+}
+.stub::before {
+  left: calc(var(--notch) * -1);
+}
+.stub::after {
+  right: calc(var(--notch) * -1);
+}
+.barcode {
+  flex: 1;
+  max-width: 11rem;
+  height: 1.6rem;
+  opacity: 0.8;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-ink) 0 2px,
+    transparent 2px 4px,
+    var(--color-ink) 4px 5px,
+    transparent 5px 8px,
+    var(--color-ink) 8px 11px,
+    transparent 11px 12px,
+    var(--color-ink) 12px 13px,
+    transparent 13px 17px
+  );
+}
+.stubText {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+
+@media (min-width: 640px) {
+  .ticket {
+    max-width: 24rem;
+    margin-inline: 1.5rem auto;
+  }
+}
+@media (min-width: 1024px) {
+  /* Photo on the right, ticket overlapping its lower-left and standing partly off it */
+  .wrap {
+    padding-bottom: 3.5rem;
+  }
+  .frame {
+    width: 74%;
+    margin-left: auto;
+    aspect-ratio: 3 / 4;
+    max-height: 36rem;
+  }
+  .ticket {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 64%;
+    min-width: 17.5rem;
+    max-width: 21rem;
+    margin: 0;
+    padding: 1.2rem 1.2rem 0;
+  }
+  .title {
+    font-size: 1.2rem;
+  }
+  .body {
+    margin-top: 0.9rem;
+    padding-bottom: 1rem;
+    font-size: 0.9375rem;
+  }
+  .stub {
+    margin-inline: -1.2rem;
+    padding: 0.75rem 1.2rem 0.85rem;
+  }
+}

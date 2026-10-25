@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { clients, type Client } from "@/data";
 import { cn } from "@/lib/cn";
 import { asset } from "@/lib/site";
@@ -8,15 +7,18 @@ function Tile({ client }: { client: Client }) {
   return (
     <li className={styles.tile}>
       {client.file ? (
-        <Image
-          unoptimized
+        // Plain <img>: the logo files are already small and pre-made, and next/image would add a
+        // preload hint for each one that competes with the page's hero image.
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
           src={asset(`/clients/grey/${client.file}.webp`)}
           alt=""
           title={client.name}
           width={client.w}
           height={client.h}
-          // Tiny files. Loading them up front stops them decoding mid-slide, which made the rows stutter.
+          // Loaded up front (not lazily) so they never decode mid-slide, but at low priority
           loading="eager"
+          fetchPriority="low"
           decoding="async"
           className={styles.logo}
         />
