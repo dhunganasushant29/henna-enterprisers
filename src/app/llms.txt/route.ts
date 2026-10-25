@@ -24,7 +24,7 @@ export function GET() {
 
 - Licence: ${site.licence} (${site.regulator})
 - Company registration: ${site.registration}
-- Head office: ${site.address.street}, ${site.address.city} ${site.address.postalCode}, Nepal. Phone ${site.phone.intl}. Email ${site.email.info}
+- Head office: ${site.address.street}, ${site.address.city} ${site.address.postalCode}, Nepal. Phone ${site.phone.intl}. Mobile ${site.mobile.display} (also WhatsApp) and ${site.mobile2.display}. Email ${site.email.info}
 - Employers: ${site.email.corporate}
 - Other offices: ${abroad}
 

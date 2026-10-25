@@ -14,7 +14,8 @@ export const metadata = pageMetadata({
 
 const channels = [
   { k: "Office phone", v: site.phone.intl, href: site.phone.href, note: "Best for quick questions" },
-  { k: "Mobile and WhatsApp", v: site.mobile.display, href: site.mobile.whatsapp, note: "Managing Director's number" },
+  { k: "Mobile and WhatsApp", v: site.mobile.display, href: site.mobile.whatsapp, note: "Call or send a WhatsApp message" },
+  { k: "Mobile", v: site.mobile2.display, href: site.mobile2.href, note: "Our second mobile number" },
   {
     k: "General questions",
     v: site.email.info,

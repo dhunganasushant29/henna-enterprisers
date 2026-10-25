@@ -1,4 +1,4 @@
-/* Cut-out portrait standing in an arched, red-lit frame. Works on light and dark sections. */
+/* Portrait photo in an arched, red-lit frame. Works on light and dark sections. */
 .portrait {
   position: relative;
   width: 100%;
@@ -25,17 +25,20 @@
 }
 .person {
   position: absolute;
-  inset: auto 0 0 0;
-  height: 92%;
+  inset: 0;
 }
-.person img,
-.silhouette {
-  object-fit: contain;
-  object-position: bottom;
+.person img {
+  object-fit: cover;
+  object-position: 50% 20%;
 }
-.silhouette {
-  width: 100%;
-  height: 100%;
+/* Soft darkening at the foot of the photo so the caption card stands out, plus a red tint at the edges */
+.shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgb(14 16 22 / 0.55), transparent 40%),
+    radial-gradient(120% 90% at 50% 20%, transparent 60%, rgb(120 16 24 / 0.35));
 }
 /* Name card overlapping the bottom of the portrait */
 .card {
@@ -57,9 +60,9 @@
 .dots {
   top: 0;
   right: 0;
-  width: 66%;
-  height: 50%;
-  opacity: 0.5;
+  width: 38%;
+  height: 32%;
+  opacity: 0.3;
 }
 .cardTitle {
   display: block;

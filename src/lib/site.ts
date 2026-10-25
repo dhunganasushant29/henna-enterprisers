@@ -31,7 +31,10 @@ export const site = {
   yearsExperience: 30,
   googleRating: { value: "5.0", count: 4 },
   phone: { display: "01-4979649", intl: "+977-1-4979649", href: "tel:+97714979649" },
-  mobile: { display: "+977 985-6045586", href: "tel:+9779856045586", whatsapp: "https://wa.me/9779856045586" },
+  /** Main mobile number, also used for WhatsApp. */
+  mobile: { display: "+977 984-1076393", href: "tel:+9779841076393", whatsapp: "https://wa.me/9779841076393" },
+  /** Second mobile number. */
+  mobile2: { display: "+977 982-3277144", href: "tel:+9779823277144" },
   email: { info: "info@hennaconsultants.com", corporate: "corporate@hennaconsultants.com" },
   hours: { opens: "10:00", label: "Opens 10:00 AM (Nepal time)" },
   address: {
@@ -116,5 +119,5 @@ export const md = {
   name: "Dinesh Bhandari",
   title: "Managing Director",
   email: "corporate@hennaconsultants.com",
-  phone: "+977 985-6045586",
+  phone: "+977 984-1076393",
 };

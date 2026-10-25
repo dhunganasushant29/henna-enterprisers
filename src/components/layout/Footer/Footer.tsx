@@ -85,6 +85,15 @@ export function Footer() {
               </a>
             </li>
             <li>
+              <a href={site.mobile2.href} className={styles.line}>
+                <span className={styles.lineLabel}>Call our mobile</span>
+                <span className={styles.lineValue}>{site.mobile2.display}</span>
+                <span aria-hidden className={styles.lineArrow}>
+                  <Phone size={18} />
+                </span>
+              </a>
+            </li>
+            <li>
               <a href={`mailto:${site.email.info}`} className={styles.line}>
                 <span className={styles.lineLabel}>Write to us</span>
                 <span className={styles.lineValue}>{site.email.info}</span>
