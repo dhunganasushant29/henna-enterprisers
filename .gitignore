@@ -44,3 +44,8 @@ next-env.d.ts
 
 # local tooling
 .claude/
+
+# loose files in the project root (originals belong in assets/photos)
+/*.jpg
+/*.jpeg
+/*.png
