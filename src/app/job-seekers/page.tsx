@@ -1,6 +1,6 @@
 import { Clock, Phone } from "lucide-react";
-import { CtaBand, Faq, HeroCard, PageHero, ProcessSteps } from "@/components/sections";
-import { ButtonLink, Label, Photo, Section, SectionHeader, WhatsAppIcon } from "@/components/ui";
+import { CtaBand, Faq, HeroCard, PageHero, PhotoFeature, ProcessSteps } from "@/components/sections";
+import { ButtonLink, Label, Section, SectionHeader, WhatsAppIcon } from "@/components/ui";
 import { jobSeekerFaqs } from "@/data";
 import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -77,19 +77,14 @@ export default function JobSeekersPage() {
           title="From our office to your new job."
           intro="This is what happens, step by step, so you always know what comes next."
         />
-        <figure className={styles.journeyPhoto}>
-          <Photo
-            name="airport-departure"
-            alt="A traveller with his bag at an airport gate, watching a plane take off"
-            fill
-            sizes="(min-width: 1200px) 72rem, 100vw"
-            className={styles.journeyImg}
-          />
-          <figcaption className={styles.journeyCaption}>
-            <span className={styles.journeyLabel}>Your journey</span>
-            <span className={styles.journeyTitle}>From Tokha to your new job, we stay with you at every step.</span>
-          </figcaption>
-        </figure>
+        <PhotoFeature
+          name="airport-departure"
+          alt="A traveller with his bag at an airport gate, watching a plane take off"
+          label="Your journey"
+          title="From Tokha to your new job, we stay with you at every step."
+          focus="70% 12%"
+          className={styles.journeyPhoto}
+        />
         <ProcessSteps steps={journey} className={styles.steps} />
       </Section>
 

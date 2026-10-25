@@ -19,3 +19,4 @@ export { HeroCard } from "./HeroCard";
 export { PhotoCollage } from "./PhotoCollage";
 export { ContactForm } from "./ContactForm";
 export { BoardingPass } from "./BoardingPass";
+export { PhotoFeature } from "./PhotoFeature";

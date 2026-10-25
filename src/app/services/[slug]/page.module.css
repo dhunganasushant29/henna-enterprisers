@@ -46,6 +46,11 @@
   color: rgb(255 255 255 / 0.75);
 }
 
+/* Service photo above the overview */
+.photo {
+  margin-bottom: 3.5rem;
+}
+
 /* Overview text with the "What is included" card beside it */
 .overview {
   display: grid;

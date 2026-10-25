@@ -39,6 +39,11 @@
   transform: translateX(4px);
 }
 
+/* Construction photo above the list */
+.photo {
+  margin-bottom: 3rem;
+}
+
 /* Industry list */
 .list {
   border-top: 1px solid var(--color-line);

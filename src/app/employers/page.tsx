@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import { CtaBand, Faq, HeroCard, PageHero, ProcessJourney } from "@/components/sections";
+import { CtaBand, Faq, HeroCard, PageHero, PhotoFeature, ProcessJourney } from "@/components/sections";
 import { ButtonLink, Section, SectionHeader } from "@/components/ui";
 import { employerDocuments, employerFaqs, hiringSteps } from "@/data";
 import { pageMetadata } from "@/lib/seo";
@@ -81,6 +81,16 @@ export default function EmployersPage() {
             </li>
           ))}
         </ul>
+      </Section>
+
+      <Section spacing="flush">
+        <PhotoFeature
+          name="employer-meeting"
+          alt="An employer and a recruiter smiling and shaking hands across an office desk"
+          label="Hiring with Henna"
+          title="We sit down with you, understand the job, and agree a clear hiring plan."
+          focus="50% 35%"
+        />
       </Section>
 
       <Section tone="sand">

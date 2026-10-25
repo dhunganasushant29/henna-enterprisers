@@ -1,0 +1,59 @@
+/* Captioned photo: dark gradient at the foot for the text, a soft red tint from the corner */
+.figure {
+  composes: reveal from "@/styles/motion.module.css";
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-ink);
+}
+.banner {
+  aspect-ratio: 4 / 3;
+}
+.card {
+  aspect-ratio: 4 / 3;
+}
+.img {
+  object-fit: cover;
+}
+.caption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  padding: 1.25rem;
+  background:
+    linear-gradient(to top, rgb(12 14 19 / 0.86), transparent 62%),
+    radial-gradient(80% 70% at 100% 0%, rgb(200 32 43 / 0.22), transparent 60%);
+  color: white;
+}
+.label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-accent);
+}
+.title {
+  max-width: 34rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 2.6vw, 2rem);
+  line-height: 1.18;
+}
+.card .title {
+  font-size: 1.25rem;
+}
+.credit {
+  font-size: 0.625rem;
+  color: rgb(255 255 255 / 0.5);
+}
+
+@media (min-width: 768px) {
+  .banner {
+    aspect-ratio: 21 / 8;
+  }
+  .banner .caption {
+    padding: 2rem 2.5rem;
+  }
+}

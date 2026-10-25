@@ -1,3 +1,5 @@
+import type { ImageName } from "./images";
+
 /**
  * Services. Each one gets its own page at /services/<slug>/.
  * Content is based on the company profile, written in plain language.
@@ -18,6 +20,8 @@ export type Service = {
   /** Who this service is mainly for. */
   audience: "employers" | "job-seekers" | "both";
   seo: { title: string; description: string };
+  /** Photo for the service page, its thumbnail in lists and its schema. */
+  photo: { name: ImageName; alt: string; focus?: string };
 };
 
 export const services: Service[] = [
@@ -48,6 +52,11 @@ export const services: Service[] = [
       { title: "We do the rest", body: "Medical check, visa, approval and travel, until your workers arrive." },
     ],
     audience: "employers",
+    photo: {
+      name: "interview-handshake",
+      alt: "An employer and a new worker shaking hands across a desk after a job interview",
+      focus: "60% 40%",
+    },
     seo: {
       title: "Hire Nepali Workers for Gulf Companies",
       description:
@@ -77,6 +86,11 @@ export const services: Service[] = [
       { title: "Share results", body: "You get the results and choose your workers." },
     ],
     audience: "employers",
+    photo: {
+      name: "skill-inspection",
+      alt: "A worker in a hard hat and safety vest checking steel rebar on a building site",
+      focus: "50% 50%",
+    },
     seo: {
       title: "Skill Tests for Nepali Workers",
       description:
@@ -107,6 +121,11 @@ export const services: Service[] = [
       { title: "Flights booked", body: "We book tickets and tell you the arrival date." },
     ],
     audience: "both",
+    photo: {
+      name: "airport-terminal",
+      alt: "Travellers with luggage walking through a sunlit airport terminal",
+      focus: "50% 60%",
+    },
     seo: {
       title: "Visa & Air Tickets for Nepali Workers",
       description:
@@ -136,6 +155,7 @@ export const services: Service[] = [
       { title: "Start", body: "We arrange your travel and stay in touch during your internship." },
     ],
     audience: "both",
+    photo: { name: "hotel-reception", alt: "The reception desk and lobby of a modern hotel", focus: "50% 55%" },
     seo: {
       title: "Hotel Internships Abroad for Students",
       description:
@@ -165,6 +185,11 @@ export const services: Service[] = [
       { title: "Help", body: "Every worker leaves with our phone number." },
     ],
     audience: "job-seekers",
+    photo: {
+      name: "training-briefing",
+      alt: "A trainer explaining information to a group sitting around a table with laptops",
+      focus: "30% 40%",
+    },
     seo: {
       title: "Pre-Departure Training for Workers",
       description:

@@ -3,6 +3,9 @@
   display: grid;
   gap: 3rem;
 }
+.officePhoto {
+  margin-bottom: 2rem;
+}
 .address {
   composes: h3 from "@/styles/text.module.css";
   margin-top: 1rem;

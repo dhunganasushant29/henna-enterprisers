@@ -16,6 +16,12 @@ export const photoCredits: Partial<Record<ImageName, PhotoCredit>> = {
   "factory-workers": unsplash("Remy Gieling", "KP6XQIEjjPA"),
   "security-guard": unsplash("Etienne Girardet", "vhKSJjv-yBM"),
   "hotel-chef": unsplash("Pylyp Sukhenko", "y-XZf_TNRms"),
+  "interview-handshake": unsplash("Vitaly Gariev", "jEpZNyFSQwQ"),
+  "employer-meeting": unsplash("Md Ishak Rahman", "MkNnPlMThgk"),
+  "skill-inspection": unsplash("Toni Reed", "dSjrv4w1g1Q"),
+  "airport-terminal": unsplash("Briana Tozour", "rUXh5USKfUQ"),
+  "hotel-reception": unsplash("Neon Wang", "kfnWOD1Tbp8"),
+  "training-briefing": unsplash("Campaign Creators", "gMsnXqILjp4"),
   "henna-office-kathmandu": { author: "Henna Enterprises", own: true },
   "md-dinesh-bhandari": { author: "Henna Enterprises", own: true },
 };

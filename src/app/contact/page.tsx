@@ -1,5 +1,5 @@
 import { MapPin } from "lucide-react";
-import { BoardingPass, ContactForm, CtaBand, MapEmbed, OfficeList, PageHero } from "@/components/sections";
+import { BoardingPass, ContactForm, CtaBand, MapEmbed, OfficeList, PageHero, PhotoFeature } from "@/components/sections";
 import { ButtonLink, Label, Section, SectionHeader } from "@/components/ui";
 import { pageMetadata } from "@/lib/seo";
 import { md, site } from "@/lib/site";
@@ -46,6 +46,15 @@ export default function ContactPage() {
             <ContactForm />
           </div>
           <div className={styles.infoCol}>
+            <PhotoFeature
+              name="henna-office-kathmandu"
+              alt="Inside the Henna Enterprises head office in Tokha-9, Kathmandu: the Managing Director at his desk"
+              label="Our office"
+              title="Tokha-9, near Shiva Mandir. Come and meet us."
+              shape="card"
+              focus="60% 30%"
+              className={styles.officePhoto}
+            />
             <Label>Head office</Label>
             <address className={styles.address}>
               {site.address.street}

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Check, Users } from "lucide-react";
-import { CtaBand, HeroCard, PageHero, ProcessSteps, ServiceIndex } from "@/components/sections";
+import { CtaBand, HeroCard, PageHero, PhotoFeature, ProcessSteps, ServiceIndex } from "@/components/sections";
 import { ButtonLink, JsonLd, Label, Section, SectionHeader } from "@/components/ui";
 import { getService, services } from "@/data";
+import { images } from "@/data/images";
 import { pageMetadata } from "@/lib/seo";
 import { absoluteUrl, site } from "@/lib/site";
 import styles from "./page.module.css";
@@ -77,6 +78,15 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
       </PageHero>
 
       <Section defer={false}>
+        <PhotoFeature
+          name={service.photo.name}
+          alt={service.photo.alt}
+          focus={service.photo.focus}
+          label={service.title}
+          title={service.short}
+          priority
+          className={styles.photo}
+        />
         <div className={styles.overview}>
           <div className={styles.overviewText}>
             <Label>Overview</Label>
@@ -124,6 +134,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
           description: service.intro,
           serviceType: service.title,
           url: absoluteUrl(path),
+          image: absoluteUrl(`${images[service.photo.name].src}-1600.webp`),
           provider: { "@id": `${site.url}/#organization` },
           areaServed: ["Nepal", "Saudi Arabia", "United Arab Emirates", "Kuwait"],
         }}

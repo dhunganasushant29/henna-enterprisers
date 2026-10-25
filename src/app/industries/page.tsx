@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { CtaBand, HeroCard, LogoMarquee, PageHero } from "@/components/sections";
+import { CtaBand, HeroCard, LogoMarquee, PageHero, PhotoFeature } from "@/components/sections";
 import { Label, Section, SectionHeader } from "@/components/ui";
 import { clients, industries, industrySlug } from "@/data";
 import { pageMetadata } from "@/lib/seo";
@@ -49,6 +49,15 @@ export default function IndustriesPage() {
       />
 
       <Section defer={false}>
+        <PhotoFeature
+          name="construction-workers"
+          alt="Construction workers in hard hats laying steel and concrete on a building site"
+          label="Construction"
+          title="Masons, carpenters, steel fixers and helpers for building sites across the Gulf."
+          focus="50% 45%"
+          priority
+          className={styles.photo}
+        />
         <ol className={styles.list}>
           {industries.map((ind, i) => (
             <li key={ind.name} id={industrySlug(ind.name)} className={styles.row}>

@@ -12,17 +12,21 @@ const routes: { path: string; priority: number; photos?: ImageName[] }[] = [
     priority: 1,
     photos: ["construction-workers", "hotel-chef", "security-guard", "factory-workers", "md-dinesh-bhandari"],
   },
-  { path: "/employers/", priority: 0.9 },
+  { path: "/employers/", priority: 0.9, photos: ["employer-meeting"] },
   { path: "/job-seekers/", priority: 0.9, photos: ["airport-departure"] },
-  { path: "/services/", priority: 0.8 },
-  { path: "/industries/", priority: 0.7 },
+  { path: "/services/", priority: 0.8, photos: services.map((s) => s.photo.name) },
+  { path: "/industries/", priority: 0.7, photos: ["construction-workers"] },
   {
     path: "/about/",
     priority: 0.7,
     photos: ["kathmandu-aerial", "handshake", "henna-office-kathmandu", "kathmandu-valley", "md-dinesh-bhandari"],
   },
-  { path: "/contact/", priority: 0.8 },
-  ...services.map((s) => ({ path: `/services/${s.slug}/`, priority: 0.7 })),
+  { path: "/contact/", priority: 0.8, photos: ["henna-office-kathmandu"] },
+  ...services.map((s) => ({
+    path: `/services/${s.slug}/`,
+    priority: 0.7,
+    photos: [s.photo.name, ...services.filter((o) => o.slug !== s.slug).map((o) => o.photo.name)],
+  })),
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
