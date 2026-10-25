@@ -1,0 +1,1 @@
+export { IndustryMosaic } from "./IndustryMosaic";

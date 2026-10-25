@@ -8,7 +8,7 @@ import {
   ValuesList,
   WhereWeWork,
 } from "@/components/sections";
-import { ButtonLink, Label, Section, SectionHeader } from "@/components/ui";
+import { ButtonLink, Label, Photo, Section, SectionHeader } from "@/components/ui";
 import { pageMetadata } from "@/lib/seo";
 import { md, site } from "@/lib/site";
 import styles from "./page.module.css";
@@ -58,6 +58,37 @@ export default function AboutPage() {
             </div>
             <FactsRow className={styles.facts} />
           </div>
+        </div>
+      </Section>
+
+      <Section tone="white" bordered spacing="compact">
+        <div className={styles.gallery}>
+          <figure className={styles.office}>
+            <Photo
+              name="henna-office-kathmandu"
+              alt={`${md.name}, Managing Director, working at his desk in the Henna Enterprises head office in Tokha, Kathmandu`}
+              fill
+              sizes="(min-width: 1024px) 44rem, 100vw"
+              className={styles.galleryImg}
+            />
+            <figcaption className={styles.galleryCaption}>
+              <span className={styles.galleryLabel}>Inside our office</span>
+              Our head office in Tokha-9, Kathmandu, where every hire is planned and checked.
+            </figcaption>
+          </figure>
+          <figure className={styles.valley}>
+            <Photo
+              name="kathmandu-valley"
+              alt="Kathmandu valley under the hills on a misty morning"
+              fill
+              sizes="(min-width: 1024px) 28rem, 100vw"
+              className={styles.galleryImg}
+            />
+            <figcaption className={styles.galleryCaption}>
+              <span className={styles.galleryLabel}>Based in Kathmandu</span>
+              Finding good workers from every part of Nepal for {site.yearsExperience}+ years.
+            </figcaption>
+          </figure>
         </div>
       </Section>
 

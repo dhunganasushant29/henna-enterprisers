@@ -3,15 +3,15 @@ import { Halftone, Photo } from "@/components/ui";
 import { site } from "@/lib/site";
 import styles from "./PhotoCollage.module.css";
 
-/** About-page hero visual: office tower in an arch, handshake photo overlapping, and key facts. */
+/** About-page hero visual: Kathmandu from above in an arch, handshake photo overlapping, and key facts. */
 export function PhotoCollage() {
   return (
     <div className={styles.collage}>
       <Halftone tone="brand" from="fromBottomLeft" className={styles.dots} />
       <div className={styles.main}>
         <Photo
-          name="office-tower"
-          alt="Glass office tower representing the international companies Henna Enterprises works with"
+          name="kathmandu-aerial"
+          alt="Colourful rooftops of Kathmandu, Nepal, seen from above, home of Henna Enterprises"
           fill
           priority
           sizes="(min-width: 1024px) 26rem, 70vw"

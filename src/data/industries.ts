@@ -18,6 +18,14 @@ import {
 
 export type Industry = { icon: LucideIcon; name: string; roles: string[] };
 
+/** URL-friendly id for an industry, used as its anchor on the Industries page (#construction). */
+export const industrySlug = (name: string) =>
+  name
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
 export const industries: Industry[] = [
   { icon: HardHat, name: "Construction", roles: ["Mason", "Carpenter", "Steel fixer", "Helper"] },
   { icon: ConciergeBell, name: "Hotels & Restaurants", roles: ["Waiter", "Cook", "Room cleaner", "Barista"] },

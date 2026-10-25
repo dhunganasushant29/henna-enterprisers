@@ -1,5 +1,5 @@
-import { AudienceSplit, HomeHero, MdMessage, ServiceExplorer, StartJourney } from "@/components/home";
-import { CtaBand, IndustryIndex, LicenceNote, LogoMarquee, OfficeList, ProcessJourney } from "@/components/sections";
+import { AudienceSplit, HomeHero, IndustryMosaic, MdMessage, ServiceExplorer, StartJourney } from "@/components/home";
+import { CtaBand, LicenceNote, LogoMarquee, OfficeList, ProcessJourney } from "@/components/sections";
 import { Section, SectionHeader, TextLink } from "@/components/ui";
 import { hiringSteps } from "@/data";
 import styles from "./page.module.css";
@@ -38,21 +38,13 @@ export default function HomePage() {
       </Section>
 
       <Section tone="white">
-        <div className={styles.split}>
-          <div className={styles.splitSide}>
-            <SectionHeader
-              label="Industries"
-              title="Workers for hotels, building sites and more."
-              intro="We know the skills each job needs, so the people we send are ready to start work."
-            />
-            <TextLink href="/industries/" className={styles.sideLink}>
-              See all 13 industries
-            </TextLink>
-          </div>
-          <div className={styles.splitMain}>
-            <IndustryIndex limit={7} columns={1} />
-          </div>
-        </div>
+        <SectionHeader
+          label="Industries"
+          title="Workers for building sites, hotels and more."
+          intro="We know the skills each job needs, so the people we send are ready to start work."
+          action={<TextLink href="/industries/">See all 13 industries</TextLink>}
+        />
+        <IndustryMosaic />
       </Section>
 
       <Section>

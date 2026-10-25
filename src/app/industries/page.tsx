@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { CtaBand, HeroCard, LogoMarquee, PageHero } from "@/components/sections";
 import { Label, Section, SectionHeader } from "@/components/ui";
-import { clients, industries } from "@/data";
+import { clients, industries, industrySlug } from "@/data";
 import { pageMetadata } from "@/lib/seo";
 import styles from "./page.module.css";
 
@@ -51,7 +51,7 @@ export default function IndustriesPage() {
       <Section defer={false}>
         <ol className={styles.list}>
           {industries.map((ind, i) => (
-            <li key={ind.name} className={styles.row}>
+            <li key={ind.name} id={industrySlug(ind.name)} className={styles.row}>
               <span aria-hidden className={styles.num}>
                 {String(i + 1).padStart(2, "0")}
               </span>

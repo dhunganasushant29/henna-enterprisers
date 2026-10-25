@@ -113,3 +113,15 @@
     grid-column: span 7;
   }
 }
+
+/* Arriving from a link like /industries/#security: the row glows briefly */
+@media (prefers-reduced-motion: no-preference) {
+  .row:target {
+    animation: target-glow 2.4s var(--ease-out);
+  }
+}
+@keyframes target-glow {
+  from {
+    background: rgb(200 32 43 / 0.08);
+  }
+}
