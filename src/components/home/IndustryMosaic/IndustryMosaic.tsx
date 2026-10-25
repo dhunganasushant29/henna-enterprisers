@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Photo } from "@/components/ui";
 import { industries, industrySlug } from "@/data";
-import { creditLine, photoCredits } from "@/data/photoCredits";
 import type { ImageName } from "@/data/images";
 import styles from "./IndustryMosaic.module.css";
 
@@ -42,7 +41,6 @@ export function IndustryMosaic() {
       <ul className={styles.grid}>
         {featured.map((f) => {
           const ind = industries.find((x) => x.name === f.name)!;
-          const credit = photoCredits[f.photo];
           return (
             <li key={f.name} className={`${styles.tile} ${f.tile}`}>
               <Link href={`/industries/#${industrySlug(f.name)}`} className={styles.link}>
@@ -67,7 +65,6 @@ export function IndustryMosaic() {
                 <span className={styles.body}>
                   <span className={styles.name}>{f.name}</span>
                   <span className={styles.roles}>{ind.roles.join(" · ")}</span>
-                  {credit ? <span className={styles.credit}>{creditLine(credit)}</span> : null}
                 </span>
               </Link>
             </li>

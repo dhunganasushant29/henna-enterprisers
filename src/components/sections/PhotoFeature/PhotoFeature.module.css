@@ -44,10 +44,6 @@
 .card .title {
   font-size: 1.25rem;
 }
-.credit {
-  font-size: 0.625rem;
-  color: rgb(255 255 255 / 0.5);
-}
 
 @media (min-width: 768px) {
   .banner {

@@ -1,5 +1,4 @@
 import { Photo } from "@/components/ui";
-import { creditLine, photoCredits } from "@/data/photoCredits";
 import type { ImageName } from "@/data/images";
 import { cn } from "@/lib/cn";
 import styles from "./PhotoFeature.module.css";
@@ -22,10 +21,9 @@ type Props = {
 
 /**
  * A captioned photo (<figure> + <figcaption>), used to give each page its own image.
- * The photo brings its credit, blurred preview and ImageObject schema from <Photo>.
+ * The photo brings its blurred preview and ImageObject schema (with the photographer credit) from <Photo>.
  */
 export function PhotoFeature({ name, alt, label, title, shape = "banner", focus, priority, className }: Props) {
-  const credit = photoCredits[name];
   return (
     <figure className={cn(styles.figure, styles[shape], className)}>
       <Photo
@@ -37,11 +35,10 @@ export function PhotoFeature({ name, alt, label, title, shape = "banner", focus,
         className={styles.img}
         style={focus ? { objectPosition: focus } : undefined}
       />
-      {label || title || credit ? (
+      {label || title ? (
         <figcaption className={styles.caption}>
           {label ? <span className={styles.label}>{label}</span> : null}
           {title ? <span className={styles.title}>{title}</span> : null}
-          {credit ? <span className={styles.credit}>{creditLine(credit)}</span> : null}
         </figcaption>
       ) : null}
     </figure>

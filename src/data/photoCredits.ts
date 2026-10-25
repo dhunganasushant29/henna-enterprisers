@@ -1,7 +1,7 @@
 import type { ImageName } from "./images";
 
 /**
- * Who took each photo, used for the visible credit and the ImageObject schema.
+ * Who took each photo, used for the ImageObject schema (not shown on the page).
  * Stock photos are from Unsplash (free for commercial use under the Unsplash License).
  */
 export type PhotoCredit = { author: string; page?: string; own?: boolean };
@@ -25,6 +25,3 @@ export const photoCredits: Partial<Record<ImageName, PhotoCredit>> = {
   "henna-office-kathmandu": { author: "Henna Enterprises", own: true },
   "md-dinesh-bhandari": { author: "Henna Enterprises", own: true },
 };
-
-/** Short visible credit, e.g. "Photo: Zhi Gong / Unsplash". */
-export const creditLine = (c: PhotoCredit) => (c.own ? `Photo: ${c.author}` : `Photo: ${c.author} / Unsplash`);
