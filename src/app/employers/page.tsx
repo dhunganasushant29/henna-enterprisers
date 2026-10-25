@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import { CtaBand, Faq, HeroTicket, PageHero, ProcessJourney } from "@/components/sections";
+import { CtaBand, Faq, HeroCard, PageHero, PhotoFeature, ProcessJourney } from "@/components/sections";
 import { ButtonLink, Section, SectionHeader } from "@/components/ui";
 import { employerDocuments, employerFaqs, hiringSteps } from "@/data";
 import { pageMetadata } from "@/lib/seo";
@@ -48,16 +48,7 @@ export default function EmployersPage() {
         }
         intro="Tell us what you need and we will do the rest. We find the workers, arrange interviews and tests, prepare the papers and send your new team to you."
         aside={
-          <HeroTicket
-            photo={{
-              name: "employer-meeting",
-              alt: "An employer and a recruiter smiling and shaking hands across an office desk",
-              focus: "30% 40%",
-              flip: true,
-            }}
-            label="To get started"
-            title="Send us four things."
-          >
+          <HeroCard label="To get started" title="Send us four things.">
             <ol className={styles.brief}>
               {brief.map((item, i) => (
                 <li key={item} className={styles.briefItem}>
@@ -72,7 +63,7 @@ export default function EmployersPage() {
               <Mail size={16} aria-hidden /> Email the job details
             </a>
             <p className={styles.briefTo}>to {site.email.corporate}</p>
-          </HeroTicket>
+          </HeroCard>
         }
       >
         <ButtonLink href={requirementMail}>Tell us what you need</ButtonLink>
@@ -90,6 +81,16 @@ export default function EmployersPage() {
             </li>
           ))}
         </ul>
+      </Section>
+
+      <Section spacing="flush">
+        <PhotoFeature
+          name="employer-meeting"
+          alt="An employer and a recruiter smiling and shaking hands across an office desk"
+          label="Hiring with Henna"
+          title="We sit down with you, understand the job, and agree a clear hiring plan."
+          focus="50% 35%"
+        />
       </Section>
 
       <Section tone="sand">

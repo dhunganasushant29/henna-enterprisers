@@ -1,34 +1,33 @@
-/* Service list on the hero ticket */
+/* Service list in the hero card */
 .menu > li {
-  border-top: 1px solid rgb(21 24 31 / 0.1);
+  border-top: 1px solid rgb(255 255 255 / 0.1);
 }
 .menu > li:last-child {
-  border-bottom: 1px solid rgb(21 24 31 / 0.1);
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
 }
 .menuLink {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding-block: 0.7rem;
-  color: var(--color-ink);
+  padding-block: 0.875rem;
 }
 .menuNum {
   font-family: var(--font-serif);
-  color: var(--color-brand);
+  color: var(--color-on-dark-accent);
 }
 .menuTitle {
   flex: 1;
   font-weight: 600;
 }
 .menuArrow {
-  color: var(--color-subtle);
+  color: rgb(255 255 255 / 0.4);
   transition:
     transform 0.2s,
     color 0.2s;
 }
 .menuLink:hover .menuArrow {
   transform: translateX(4px);
-  color: var(--color-brand);
+  color: white;
 }
 
 .index {

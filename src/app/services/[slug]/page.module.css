@@ -1,4 +1,4 @@
-/* "At a glance" steps on the hero ticket, joined by a thin rail */
+/* "At a glance" steps in the dark hero card, joined by a thin rail */
 .glance {
   position: relative;
   display: grid;
@@ -11,7 +11,7 @@
   bottom: 0.8rem;
   left: 0.8rem;
   width: 1px;
-  background: rgb(21 24 31 / 0.15);
+  background: rgb(255 255 255 / 0.15);
 }
 .glanceStep {
   position: relative;
@@ -19,7 +19,7 @@
   align-items: center;
   gap: 0.9rem;
   font-weight: 600;
-  color: var(--color-ink);
+  color: rgb(255 255 255 / 0.9);
 }
 .glanceNum {
   display: grid;
@@ -28,23 +28,27 @@
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 999px;
-  background: var(--color-brand);
-  box-shadow: 0 0 0 3px #f6f2ea;
+  background: var(--color-ink);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25);
   font-size: 0.75rem;
   font-weight: 700;
-  color: white;
+  color: var(--color-on-dark-accent);
 }
 .glanceFor {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
   padding: 0.4rem 0.8rem;
   border-radius: 999px;
-  background: white;
-  box-shadow: inset 0 0 0 1px rgb(21 24 31 / 0.1);
+  background: rgb(255 255 255 / 0.08);
   font-size: 0.8125rem;
-  color: var(--color-ink-2);
+  color: rgb(255 255 255 / 0.75);
+}
+
+/* Service photo above the overview */
+.photo {
+  margin-bottom: 3.5rem;
 }
 
 /* Overview text with the "What is included" card beside it */

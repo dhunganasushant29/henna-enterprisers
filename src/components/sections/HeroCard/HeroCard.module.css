@@ -1,0 +1,39 @@
+/* Dark card for the right side of inner-page heroes */
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: 1.75rem;
+  border-radius: var(--radius-md);
+  background: var(--color-ink);
+  color: white;
+  box-shadow: 0 40px 80px -48px rgb(21 24 31 / 0.6);
+}
+@media (min-width: 768px) {
+  .card {
+    padding: 2.25rem;
+  }
+}
+.dots {
+  top: 0;
+  right: 0;
+  width: 66%;
+  height: 66%;
+  opacity: 0.6;
+}
+.content {
+  position: relative;
+}
+.title {
+  margin-top: 0.75rem;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  line-height: 1.35;
+}
+@media (min-width: 768px) {
+  .title {
+    font-size: 1.75rem;
+  }
+}
+.body {
+  margin-top: 1.5rem;
+}

@@ -1,44 +1,47 @@
-/* Figures on the hero ticket */
+/* Figures in the hero card */
 .stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
   overflow: hidden;
-  border-radius: 0.6rem;
-  background: rgb(21 24 31 / 0.1);
+  border-radius: 4px;
+  background: rgb(255 255 255 / 0.1);
 }
 .stat {
-  padding: 0.85rem;
-  background: white;
+  padding: 1rem;
+  background: var(--color-ink);
 }
 .statValue {
   font-family: var(--font-serif);
-  font-size: 1.75rem;
+  font-size: 1.875rem;
   line-height: 1.2;
-  color: var(--color-ink);
 }
 .statName {
   margin-top: 0.25rem;
   font-size: 0.75rem;
-  color: var(--color-muted);
+  color: rgb(255 255 255 / 0.6);
 }
 .ask {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
   font-weight: 600;
-  color: var(--color-ink);
 }
 .underline {
   composes: underline from "@/styles/text.module.css";
 }
 .askArrow {
-  color: var(--color-brand);
+  color: var(--color-on-dark-accent);
   transition: transform 0.2s;
 }
 .ask:hover .askArrow {
   transform: translateX(4px);
+}
+
+/* Construction photo above the list */
+.photo {
+  margin-bottom: 3rem;
 }
 
 /* Industry list */
