@@ -1,1 +1,0 @@
-export { PhotoCollage } from "./PhotoCollage";

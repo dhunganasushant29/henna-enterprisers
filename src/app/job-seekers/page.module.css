@@ -1,4 +1,4 @@
-/* Call / WhatsApp actions inside the dark hero card */
+/* Call / WhatsApp actions on the hero ticket */
 .noteActions {
   display: flex;
   flex-wrap: wrap;
@@ -25,37 +25,30 @@
   background: var(--color-brand-600);
 }
 .noteWhatsapp {
-  border: 1px solid rgb(255 255 255 / 0.2);
-  color: white;
+  border: 1px solid rgb(21 24 31 / 0.18);
+  color: var(--color-ink);
 }
 .noteWhatsapp svg {
   color: var(--color-whatsapp);
 }
 .noteWhatsapp:hover {
-  border-color: rgb(255 255 255 / 0.5);
+  border-color: var(--color-ink);
 }
 .noteHours {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgb(255 255 255 / 0.1);
+  margin-top: 1.25rem;
   font-size: 0.875rem;
-  color: rgb(255 255 255 / 0.6);
+  color: var(--color-muted);
 }
 .noteHours svg {
   flex-shrink: 0;
-  color: var(--color-on-dark-accent);
+  color: var(--color-brand);
 }
 
 .steps {
   margin-top: 3.5rem;
-}
-
-/* Travel photo above the steps */
-.journeyPhoto {
-  margin-top: 2.5rem;
 }
 
 /* Papers to bring, and the safety list */

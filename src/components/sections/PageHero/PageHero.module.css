@@ -79,3 +79,57 @@
 .aside {
   min-width: 0;
 }
+
+/* ---- Full-width background photo ---------------------------------- */
+.withImage {
+  border-bottom: 0;
+  background: var(--color-ink);
+  color: white;
+}
+.bg {
+  position: absolute;
+  inset: 0;
+}
+.bgImg {
+  object-fit: cover;
+}
+/* Dark behind the text (left on desktop, everywhere on phones) and at the foot, a touch of red */
+.shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgb(12 14 19 / 0.85), transparent 40%), linear-gradient(rgb(12 14 19 / 0.62), rgb(12 14 19 / 0.62)),
+    radial-gradient(70% 60% at 100% 0%, rgb(200 32 43 / 0.3), transparent 65%);
+}
+.withImage .inner {
+  min-height: 34rem;
+  padding-block: 2.5rem 4rem;
+}
+.withImage .crumbs {
+  color: rgb(255 255 255 / 0.65);
+}
+.withImage .crumbs a:hover,
+.withImage .current {
+  color: white;
+}
+.withImage .title {
+  color: white;
+}
+.withImage .title em {
+  color: var(--color-on-dark-accent);
+}
+.withImage .intro {
+  color: rgb(255 255 255 / 0.82);
+}
+@media (min-width: 1024px) {
+  .withImage .shade {
+    background:
+      linear-gradient(to right, rgb(12 14 19 / 0.9) 0%, rgb(12 14 19 / 0.72) 42%, rgb(12 14 19 / 0.25) 100%),
+      linear-gradient(to top, rgb(12 14 19 / 0.7), transparent 35%),
+      radial-gradient(60% 60% at 100% 0%, rgb(200 32 43 / 0.28), transparent 65%);
+  }
+  .withImage .inner {
+    min-height: 38rem;
+    padding-block: 3.5rem 5rem;
+  }
+}

@@ -1,16 +1,7 @@
-import {
-  CtaBand,
-  FactsRow,
-  LicenceNote,
-  MdPortrait,
-  PageHero,
-  PhotoCollage,
-  ValuesList,
-  WhereWeWork,
-} from "@/components/sections";
+import { CtaBand, HeroTicket, FactsRow, LicenceNote, MdPortrait, PageHero, ValuesList, WhereWeWork } from "@/components/sections";
 import { ButtonLink, Label, Photo, Section, SectionHeader } from "@/components/ui";
 import { pageMetadata } from "@/lib/seo";
-import { md, site } from "@/lib/site";
+import { md, offices, site } from "@/lib/site";
 import styles from "./page.module.css";
 
 export const metadata = pageMetadata({
@@ -32,7 +23,33 @@ export default function AboutPage() {
           </>
         }
         intro={`For more than ${site.yearsExperience} years, we have helped Nepali workers find good jobs abroad, and helped companies find workers they can trust. We are licensed by the Government of Nepal.`}
-        aside={<PhotoCollage />}
+        image={{
+          name: "kathmandu-aerial",
+          alt: "Colourful rooftops of Kathmandu, Nepal, seen from above, home of Henna Enterprises",
+          focus: "50% 45%",
+        }}
+        aside={
+          <HeroTicket label="Licensed agency" title={`Honest recruitment from Kathmandu for over ${site.yearsExperience} years.`}>
+            <dl className={styles.heroFacts}>
+              <div>
+                <dt>Government licence</dt>
+                <dd>{site.licence}</dd>
+              </div>
+              <div>
+                <dt>Company registration</dt>
+                <dd>{site.registration}</dd>
+              </div>
+              <div>
+                <dt>Offices</dt>
+                <dd>{offices.map((o) => o.city).join(" · ")}</dd>
+              </div>
+              <div>
+                <dt>Google rating</dt>
+                <dd>{site.googleRating.value} / 5</dd>
+              </div>
+            </dl>
+          </HeroTicket>
+        }
       />
 
       <Section defer={false}>

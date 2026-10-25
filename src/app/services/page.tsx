@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/data";
-import { CtaBand, HeroCard, PageHero, ServiceIndex } from "@/components/sections";
+import { CtaBand, HeroTicket, PageHero, ServiceIndex } from "@/components/sections";
 import { ButtonLink, Section, SectionHeader } from "@/components/ui";
 import { pageMetadata } from "@/lib/seo";
 import styles from "./page.module.css";
@@ -32,6 +32,11 @@ export default function ServicesPage() {
   return (
     <>
       <PageHero
+        image={{
+          name: "airport-terminal",
+          alt: "Travellers with luggage walking through a sunlit airport terminal",
+          focus: "55% 50%",
+        }}
         crumbs={[{ name: "Services", path: "/services/" }]}
         label="Our services"
         title={
@@ -42,7 +47,7 @@ export default function ServicesPage() {
         intro="You do not need many different agents to hire one worker. We choose and test the workers, prepare the papers and book the travel. You deal with just one team."
 
         aside={
-          <HeroCard label="Our services">
+          <HeroTicket label="Our services">
             <ol className={styles.menu}>
               {services.map((s, i) => (
                 <li key={s.slug}>
@@ -54,11 +59,11 @@ export default function ServicesPage() {
                 </li>
               ))}
             </ol>
-          </HeroCard>
+          </HeroTicket>
         }
       >
         <ButtonLink href="/contact/">Talk to us</ButtonLink>
-        <ButtonLink href="/employers/" variant="outline">
+        <ButtonLink href="/employers/" variant="outlineLight">
           Guide for employers
         </ButtonLink>
       </PageHero>

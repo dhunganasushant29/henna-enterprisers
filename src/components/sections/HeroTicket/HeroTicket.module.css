@@ -1,0 +1,108 @@
+/*
+  Cream paper ticket, slightly tilted, floating over the hero photo.
+  The two notches at the tear line are cut out with a mask (the photo shows through).
+*/
+.shadow {
+  filter: drop-shadow(0 28px 32px rgb(0 0 0 / 0.45));
+}
+.ticket {
+  --notch: 0.75rem;
+  --stub: 3.4rem;
+  position: relative;
+  width: 100%;
+  max-width: 24rem;
+  margin-inline: auto;
+  padding: 1.4rem 1.4rem 0;
+  border-radius: 1rem;
+  background: #f6f2ea;
+  color: var(--color-ink);
+  transform: rotate(-1.5deg);
+  transition: transform 0.6s var(--ease-out);
+  /* Cut a half-circle out of each side where the tear line meets the edge */
+  -webkit-mask:
+    radial-gradient(circle var(--notch) at 0 calc(100% - var(--stub)), transparent 98%, #000 100%) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--notch) at 100% calc(100% - var(--stub)), transparent 98%, #000 100%) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle var(--notch) at 0 calc(100% - var(--stub)), transparent 98%, #000 100%) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--notch) at 100% calc(100% - var(--stub)), transparent 98%, #000 100%) right / 51% 100% no-repeat;
+}
+@media (hover: hover) {
+  .ticket:hover {
+    transform: rotate(0deg) translateY(-3px);
+  }
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgb(21 24 31 / 0.1);
+}
+.label {
+  flex: 1;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+.serial {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-subtle);
+}
+.title {
+  margin-top: 0.9rem;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  line-height: 1.25;
+}
+.body {
+  margin-top: 1rem;
+  padding-bottom: 1.2rem;
+  font-size: 0.9375rem;
+}
+/* Tear-off stub with a dashed line and a strip of barcode; its height matches --stub */
+.stub {
+  display: flex;
+  box-sizing: border-box;
+  height: var(--stub);
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-inline: -1.4rem;
+  padding: 0 1.4rem;
+  border-top: 2px dashed rgb(21 24 31 / 0.16);
+}
+.barcode {
+  flex: 1;
+  max-width: 11rem;
+  height: 1.6rem;
+  opacity: 0.8;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-ink) 0 2px,
+    transparent 2px 4px,
+    var(--color-ink) 4px 5px,
+    transparent 5px 8px,
+    var(--color-ink) 8px 11px,
+    transparent 11px 12px,
+    var(--color-ink) 12px 13px,
+    transparent 13px 17px
+  );
+}
+.stubText {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+@media (min-width: 1024px) {
+  .ticket {
+    margin-inline: auto 0;
+  }
+}

@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { Halftone, JsonLd, Label } from "@/components/ui";
+import { Halftone, JsonLd, Label, Photo } from "@/components/ui";
+import type { ImageName } from "@/data/images";
+import { cn } from "@/lib/cn";
 import { breadcrumbLd } from "@/lib/seo";
 import styles from "./PageHero.module.css";
 
@@ -13,16 +15,36 @@ type Props = {
   /** Trail after "Home". The last item is the current page. */
   crumbs: Crumb[];
   aside?: React.ReactNode;
+  /**
+   * Full-width background photo. The text turns white over a dark gradient; the photo is the
+   * page's main image, so it loads first and brings its alt text and ImageObject schema.
+   */
+  image?: { name: ImageName; alt: string; focus?: string; flip?: boolean };
   /** Buttons shown under the intro. */
   children?: React.ReactNode;
 };
 
-/** Hero for inner pages: breadcrumb (with BreadcrumbList schema), headline, intro and optional aside. */
-export function PageHero({ label, title, intro, crumbs, aside, children }: Props) {
+/** Hero for inner pages: breadcrumb (with BreadcrumbList schema), headline, intro, optional aside and background photo. */
+export function PageHero({ label, title, intro, crumbs, aside, image, children }: Props) {
   const trail = [{ name: "Home", path: "/" }, ...crumbs];
   return (
-    <section className={styles.hero}>
-      <Halftone tone="brand" from="fromTopRight" className={styles.dots} />
+    <section className={cn(styles.hero, image && styles.withImage)}>
+      {image ? (
+        <div className={styles.bg}>
+          <Photo
+            name={image.name}
+            alt={image.alt}
+            fill
+            priority
+            sizes="100vw"
+            className={styles.bgImg}
+            style={{ objectPosition: image.focus, transform: image.flip ? "scaleX(-1)" : undefined }}
+          />
+          <div aria-hidden className={styles.shade} />
+        </div>
+      ) : (
+        <Halftone tone="brand" from="fromTopRight" className={styles.dots} />
+      )}
       <div className={styles.inner}>
         <div className={styles.main}>
           <nav aria-label="Breadcrumb">
@@ -46,7 +68,9 @@ export function PageHero({ label, title, intro, crumbs, aside, children }: Props
               })}
             </ol>
           </nav>
-          <Label className={styles.label}>{label}</Label>
+          <Label dark={Boolean(image)} className={styles.label}>
+            {label}
+          </Label>
           <h1 className={styles.title}>{title}</h1>
           <div className={styles.intro}>{intro}</div>
           {children ? <div className={styles.actions}>{children}</div> : null}

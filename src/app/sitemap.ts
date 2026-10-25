@@ -27,7 +27,7 @@ const routes: { path: string; priority: number; photos?: ImageName[] }[] = [
   {
     path: "/about/",
     priority: 0.7,
-    photos: ["kathmandu-aerial", "handshake", "henna-office-kathmandu", "kathmandu-valley", "md-dinesh-bhandari"],
+    photos: ["kathmandu-aerial", "henna-office-kathmandu", "kathmandu-valley", "md-dinesh-bhandari"],
   },
   { path: "/contact/", priority: 0.8, photos: ["henna-office-kathmandu"] },
   ...services.map((s) => ({

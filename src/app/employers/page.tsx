@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import { CtaBand, Faq, HeroCard, PageHero, PhotoFeature, ProcessJourney } from "@/components/sections";
+import { CtaBand, Faq, HeroTicket, PageHero, ProcessJourney } from "@/components/sections";
 import { ButtonLink, Section, SectionHeader } from "@/components/ui";
 import { employerDocuments, employerFaqs, hiringSteps } from "@/data";
 import { pageMetadata } from "@/lib/seo";
@@ -39,6 +39,12 @@ export default function EmployersPage() {
   return (
     <>
       <PageHero
+        image={{
+          name: "employer-meeting",
+          alt: "An employer and a recruiter smiling and shaking hands across an office desk",
+          focus: "50% 35%",
+          flip: true,
+        }}
         crumbs={[{ name: "For Employers", path: "/employers/" }]}
         label="For employers"
         title={
@@ -48,7 +54,7 @@ export default function EmployersPage() {
         }
         intro="Tell us what you need and we will do the rest. We find the workers, arrange interviews and tests, prepare the papers and send your new team to you."
         aside={
-          <HeroCard label="To get started" title="Send us four things.">
+          <HeroTicket label="To get started" title="Send us four things.">
             <ol className={styles.brief}>
               {brief.map((item, i) => (
                 <li key={item} className={styles.briefItem}>
@@ -63,11 +69,11 @@ export default function EmployersPage() {
               <Mail size={16} aria-hidden /> Email the job details
             </a>
             <p className={styles.briefTo}>to {site.email.corporate}</p>
-          </HeroCard>
+          </HeroTicket>
         }
       >
         <ButtonLink href={requirementMail}>Tell us what you need</ButtonLink>
-        <ButtonLink href={site.phone.href} variant="outline">
+        <ButtonLink href={site.phone.href} variant="outlineLight">
           Call {site.phone.intl}
         </ButtonLink>
       </PageHero>
@@ -81,16 +87,6 @@ export default function EmployersPage() {
             </li>
           ))}
         </ul>
-      </Section>
-
-      <Section spacing="flush">
-        <PhotoFeature
-          name="employer-meeting"
-          alt="An employer and a recruiter smiling and shaking hands across an office desk"
-          label="Hiring with Henna"
-          title="We sit down with you, understand the job, and agree a clear hiring plan."
-          focus="50% 35%"
-        />
       </Section>
 
       <Section tone="sand">

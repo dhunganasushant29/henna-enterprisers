@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Check, Users } from "lucide-react";
-import { CtaBand, HeroCard, PageHero, PhotoFeature, ProcessSteps, ServiceIndex } from "@/components/sections";
+import { CtaBand, HeroTicket, PageHero, ProcessSteps, ServiceIndex } from "@/components/sections";
 import { ButtonLink, JsonLd, Label, Section, SectionHeader } from "@/components/ui";
 import { getService, services } from "@/data";
 import { images } from "@/data/images";
@@ -46,6 +46,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
   return (
     <>
       <PageHero
+        image={service.photo}
         crumbs={[
           { name: "Services", path: "/services/" },
           { name: service.title, path },
@@ -54,7 +55,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         title={service.title}
         intro={service.intro}
         aside={
-          <HeroCard label="At a glance" title={service.short}>
+          <HeroTicket label="At a glance" title={service.short}>
             <ol className={styles.glance}>
               {service.steps.map((step, i) => (
                 <li key={step.title} className={styles.glanceStep}>
@@ -68,25 +69,16 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
             <p className={styles.glanceFor}>
               <Users size={15} aria-hidden /> {audienceLabel[service.audience]}
             </p>
-          </HeroCard>
+          </HeroTicket>
         }
       >
         <ButtonLink href="/contact/">Ask about this service</ButtonLink>
-        <ButtonLink href={secondary.href} variant="outline">
+        <ButtonLink href={secondary.href} variant="outlineLight">
           {secondary.label}
         </ButtonLink>
       </PageHero>
 
       <Section defer={false}>
-        <PhotoFeature
-          name={service.photo.name}
-          alt={service.photo.alt}
-          focus={service.photo.focus}
-          label={service.title}
-          title={service.short}
-          priority
-          className={styles.photo}
-        />
         <div className={styles.overview}>
           <div className={styles.overviewText}>
             <Label>Overview</Label>

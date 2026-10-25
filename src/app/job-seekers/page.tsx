@@ -1,5 +1,5 @@
 import { Clock, Phone } from "lucide-react";
-import { CtaBand, Faq, HeroCard, PageHero, PhotoFeature, ProcessSteps } from "@/components/sections";
+import { CtaBand, Faq, HeroTicket, PageHero, ProcessSteps } from "@/components/sections";
 import { ButtonLink, Label, Section, SectionHeader, WhatsAppIcon } from "@/components/ui";
 import { jobSeekerFaqs } from "@/data";
 import { pageMetadata } from "@/lib/seo";
@@ -41,6 +41,11 @@ export default function JobSeekersPage() {
   return (
     <>
       <PageHero
+        image={{
+          name: "airport-departure",
+          alt: "A traveller with his bag at an airport gate, watching a plane take off",
+          focus: "62% 30%",
+        }}
         crumbs={[{ name: "For Job Seekers", path: "/job-seekers/" }]}
         label="For job seekers"
         title={
@@ -50,7 +55,7 @@ export default function JobSeekersPage() {
         }
         intro={`We are a licensed agency with over ${site.yearsExperience} years of experience. We help you find real jobs with real companies, explain everything clearly, and stay with you until you land.`}
         aside={
-          <HeroCard label="Not sure where to start?" title="Call us. We speak Nepali and we are happy to answer your questions.">
+          <HeroTicket label="Need help?" title="Call us. We speak Nepali and we are happy to answer your questions.">
             <div className={styles.noteActions}>
               <a href={site.phone.href} className={styles.noteCall}>
                 <Phone size={16} aria-hidden /> Call {site.phone.display}
@@ -62,11 +67,11 @@ export default function JobSeekersPage() {
             <p className={styles.noteHours}>
               <Clock size={15} aria-hidden /> {site.hours.label} · {site.address.street}
             </p>
-          </HeroCard>
+          </HeroTicket>
         }
       >
         <ButtonLink href="/contact/">Visit our office</ButtonLink>
-        <ButtonLink href={site.mobile.whatsapp} variant="outline">
+        <ButtonLink href={site.mobile.whatsapp} variant="outlineLight">
           Message on WhatsApp
         </ButtonLink>
       </PageHero>
@@ -76,14 +81,6 @@ export default function JobSeekersPage() {
           label="Step by step"
           title="From our office to your new job."
           intro="This is what happens, step by step, so you always know what comes next."
-        />
-        <PhotoFeature
-          name="airport-departure"
-          alt="A traveller with his bag at an airport gate, watching a plane take off"
-          label="Your journey"
-          title="From Tokha to your new job, we stay with you at every step."
-          focus="70% 12%"
-          className={styles.journeyPhoto}
         />
         <ProcessSteps steps={journey} className={styles.steps} />
       </Section>
