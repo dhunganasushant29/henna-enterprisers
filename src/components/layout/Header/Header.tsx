@@ -17,6 +17,16 @@ const MobileMenu = dynamic(() => import("./MobileMenu").then((m) => m.MobileMenu
 export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  // After a service is picked from the dropdown, keep it shut until the pointer leaves "Services".
+  const [panelShut, setPanelShut] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+
+  // New page: a clicked dropdown link keeps focus across client-side navigation, and the
+  // dropdown opens on :focus-within, so release that focus or it stays open over the new page.
+  useEffect(() => {
+    const active = document.activeElement;
+    if (active instanceof HTMLElement && navRef.current?.contains(active)) active.blur();
+  }, [pathname]);
   // The menu remembers which page it was opened on, so navigating closes it.
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === pathname;
@@ -67,7 +77,7 @@ export function Header() {
           <div className={styles.barInner}>
             <Logo priority />
 
-            <nav aria-label="Main" className={styles.nav}>
+            <nav ref={navRef} aria-label="Main" className={styles.nav}>
               <ul className={styles.navList}>
                 {nav.map((item) => {
                   const active = isActivePath(pathname, item.href);
@@ -81,7 +91,11 @@ export function Header() {
                     );
                   }
                   return (
-                    <li key={item.href} className={styles.item}>
+                    <li
+                      key={item.href}
+                      className={cn(styles.item, panelShut && styles.shut)}
+                      onMouseLeave={() => setPanelShut(false)}
+                    >
                       <Link href={item.href} aria-current={active ? "page" : undefined} className={styles.link}>
                         {item.label}
                         <ChevronDown className={styles.chevron} aria-hidden />
@@ -90,7 +104,7 @@ export function Header() {
                         <ul>
                           {serviceLinks.map((s, i) => (
                             <li key={s.href}>
-                              <Link href={s.href} className={styles.panelLink}>
+                              <Link href={s.href} className={styles.panelLink} onClick={() => setPanelShut(true)}>
                                 <span className={styles.panelNum}>0{i + 1}</span>
                                 <span className={styles.panelTitle}>{s.label}</span>
                                 <span className={styles.panelText}>{s.short}</span>

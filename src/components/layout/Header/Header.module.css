@@ -84,6 +84,15 @@
   visibility: visible;
   transform: none;
 }
+/* Just picked a service: stay closed while the pointer is still over "Services" */
+.item.shut .panel {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+}
+.item.shut .chevron {
+  transform: none;
+}
 .panelLink {
   display: grid;
   grid-template-columns: 1.75rem 1fr;
