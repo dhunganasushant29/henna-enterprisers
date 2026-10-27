@@ -116,7 +116,7 @@ export const offices: Office[] = [
 ];
 
 export const md = {
-  name: "Dinesh Bhandari",
+  name: "Dinesh Raj Bhandari",
   title: "Managing Director",
   email: "corporate@hennaconsultants.com",
   phone: "+977 984-1076393",

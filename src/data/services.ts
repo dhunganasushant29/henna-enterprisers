@@ -139,7 +139,7 @@ export const services: Service[] = [
     intro:
       "We place students and new graduates in hotel internships abroad. Before they go, we teach them about the work, the culture and the people they will meet, so they can settle in fast.",
     body: [
-      "Our Managing Director worked in hotels across the Middle East before he started recruiting. So we know hotel work very well.",
+      "Our Managing Director worked in the Middle East and other countries before he started recruiting. So we know what life and work abroad are really like.",
       "Every hotel and every country is different. Interns who know what to expect learn faster and enjoy their time more. That is why we help them get ready before they travel.",
     ],
     includes: [

@@ -36,7 +36,7 @@ export function MdMessage() {
               </div>
               <div className={styles.fact}>
                 <dt className={styles.factName}>Background</dt>
-                <dd className={styles.factValue}>Worked in hotels in the Middle East</dd>
+                <dd className={styles.factValue}>Worked in the Middle East and other countries</dd>
               </div>
             </dl>
 
