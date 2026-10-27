@@ -151,9 +151,10 @@ export default function AboutPage() {
             <h2 className={styles.h2}>Honest and fair recruitment, always.</h2>
             <div className={`${styles.prose} ${styles.messageProse}`}>
               <p>
-                I have worked in recruitment for more than 10 years. Before that, I worked in hotels in the Middle East and other
-                countries. Because of this, I understand both workers and companies, and I can find the person who really fits
-                each company.
+                For more than 10 years, recruitment has been my life&rsquo;s work. Before that, I worked in the Middle East and
+                other countries, so I have stood where our workers stand, and I have seen what companies truly need. That is why I
+                never just fill a job. I look for the right match: the right person for the right company, a partnership built on
+                trust that lasts for years.
               </p>
               <p>
                 At Henna Enterprises, we believe in honest and fair recruitment. Our goal is to connect skilled workers with good
